@@ -32,6 +32,30 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=756773553]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "PUZ-SOULS"
+
+[node name="Start Button" type="Button" parent="PanelContainer/MarginContainer" unique_id=2115730132]
+layout_mode = 2
+text = "Start
+"
+
+[node name="Exit button" type="Button" parent="PanelContainer/MarginContainer/Start Button" unique_id=864979861]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 393.0
+offset_right = 274.0
+offset_bottom = 424.0
+text = "Exit
+"
+
+[node name="Settings button" type="Button" parent="PanelContainer/MarginContainer/Start Button" unique_id=617677249]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 347.0
+offset_right = 292.0
+offset_bottom = 378.0
+text = "Settings
+"
