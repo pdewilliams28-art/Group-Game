@@ -12,27 +12,7 @@ var interactable = NAN
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false:
-		dodge = true
-		dodge_cooldown = true
-		$Dodge_Timer.start()
-		$Dodge_Cooldown.start()
-		$CollisionShape2D.disabled = true
-		if $AnimatedSprite2D.animation == "Up":
-			velocity = Vector2(0, -1000)
-		elif $AnimatedSprite2D.animation == "UpLeft":
-			velocity = Vector2(-707, -707)
-		elif $AnimatedSprite2D.animation == "UpRight":
-			velocity = Vector2(707, -707)
-		elif $AnimatedSprite2D.animation == "Down":
-			velocity = Vector2(0, 1000)
-		elif $AnimatedSprite2D.animation == "DownLeft":
-			velocity = Vector2(-707, 707)
-		elif $AnimatedSprite2D.animation == "DownRight":
-			velocity = Vector2(707, 707)
-		elif $AnimatedSprite2D.animation == "Left":
-			velocity = Vector2(-1000, 0)
-		elif $AnimatedSprite2D.animation == "Right":
-			velocity = Vector2(1000, 0)
+		Dodge()
 	if dodge == false:
 		var move_vector: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
 		velocity = velocity.move_toward(move_vector * SPEED, accel)
@@ -69,8 +49,40 @@ func _physics_process(delta: float) -> void:
 		elif $AnimatedSprite2D.animation == "Right":
 			$AnimatedSprite2D.play("Right_Idle")
 			
-		print($AnimatedSprite2D.animation)
+	print($AnimatedSprite2D.animation)
 	move_and_slide()
+	
+
+func Dodge():
+	dodge = true
+	dodge_cooldown = true
+	$Dodge_Timer.start()
+	$Dodge_Cooldown.start()
+	$CollisionShape2D.disabled = true
+	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
+		velocity = Vector2(0, -1000)
+		$AnimatedSprite2D.play("Roll_Up")
+	elif $AnimatedSprite2D.animation == "UpLeft" or $AnimatedSprite2D.animation == "UpLeft_Idle":
+		velocity = Vector2(-707, -707)
+		$AnimatedSprite2D.play("Roll_UpLeft")
+	elif $AnimatedSprite2D.animation == "UpRight" or $AnimatedSprite2D.animation == "UpRight_Idle":
+		velocity = Vector2(707, -707)
+		$AnimatedSprite2D.play("Roll_UpRight")
+	elif $AnimatedSprite2D.animation == "Down" or $AnimatedSprite2D.animation == "Down_Idle":
+		velocity = Vector2(0, 1000)
+		$AnimatedSprite2D.play("Roll_Down")
+	elif $AnimatedSprite2D.animation == "DownLeft" or $AnimatedSprite2D.animation == "DownLeft_Idle":
+		velocity = Vector2(-707, 707)
+		$AnimatedSprite2D.play("Roll_DownLeft")
+	elif $AnimatedSprite2D.animation == "DownRight" or $AnimatedSprite2D.animation == "DownRight_Idle":
+		velocity = Vector2(707, 707)
+		$AnimatedSprite2D.play("Roll_DownRight")
+	elif $AnimatedSprite2D.animation == "Left" or $AnimatedSprite2D.animation == "Left_Idle":
+		velocity = Vector2(-1000, 0)
+		$AnimatedSprite2D.play("Roll_Left")
+	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
+		velocity = Vector2(1000, 0)
+		$AnimatedSprite2D.play("Roll_Right")
 
 func _on_dodge_timer_timeout() -> void:
 	dodge = false
