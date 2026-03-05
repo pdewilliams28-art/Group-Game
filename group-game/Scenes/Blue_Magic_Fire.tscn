@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6ps3y5awj46j"]
 
-[ext_resource type="Texture2D" uid="uid://cbn7uxwcwrf8h" path="res://Textures/New Piskel.png" id="1_wi26g"]
+[ext_resource type="Texture2D" uid="uid://dj3w164nn8pl2" path="res://Sprites/Blue_Smoke_Texture.tres" id="1_qwfoh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c0nyq"]
 blend_mode = 1
@@ -24,6 +24,6 @@ anim_speed_max = 0.69
 [node name="GPUParticles2D" type="GPUParticles2D" unique_id=655227192]
 material = SubResource("CanvasItemMaterial_c0nyq")
 amount = 100
-texture = ExtResource("1_wi26g")
+texture = ExtResource("1_qwfoh")
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_mihha")
