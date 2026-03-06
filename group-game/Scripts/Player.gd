@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		dodge_cooldown = true
 		$Dodge_Timer.start()
 		$Dodge_Cooldown.start()
-		$CollisionShape2D.disabled = true
+		$Hurtbox.disabled = true
 		if $AnimatedSprite2D.animation == "Up":
 			velocity = Vector2(0, -1000)
 		elif $AnimatedSprite2D.animation == "UpLeft":
@@ -78,6 +78,7 @@ func _on_dodge_timer_timeout() -> void:
 
 func _on_dodge_cooldown_timeout() -> void:
 	dodge_cooldown = false
+	$Hurtbox.disabled = false
 
 
 func _on_interaction_range_body_entered(body: Node2D) -> void:
