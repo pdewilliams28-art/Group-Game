@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6ps3y5awj46j"]
 
-[ext_resource type="Texture2D" uid="uid://dj3w164nn8pl2" path="res://Sprites/Blue_Smoke_Texture.tres" id="1_qwfoh"]
+[ext_resource type="Texture2D" uid="uid://dj3w164nn8pl2" path="res://Sprites/Blue_Fire.tres" id="1_qwfoh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c0nyq"]
 blend_mode = 1

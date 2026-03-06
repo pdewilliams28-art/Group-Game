@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbn7uxwcwrf8h"
-path="res://.godot/imported/New Piskel.png-a1fae72dc62a1ea52e4aacf5f32efb0f.ctex"
+uid="uid://ba2cxp3154x6o"
+path="res://.godot/imported/Red_Green_Fire_Sprite.png-85cf6249269b6e666f1a395e1c6e00d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/New Piskel.png"
-dest_files=["res://.godot/imported/New Piskel.png-a1fae72dc62a1ea52e4aacf5f32efb0f.ctex"]
+source_file="res://Sprites/Red_Green_Fire_Sprite.png"
+dest_files=["res://.godot/imported/Red_Green_Fire_Sprite.png-85cf6249269b6e666f1a395e1c6e00d5.ctex"]
 
 [params]
 
