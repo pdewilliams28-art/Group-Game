@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://uidlqq6l7s38" path="res://Sprites/Player.webp" id="2_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://dmpgjwsn8o2mi" path="res://Sprites/plain.png" id="3_gntrk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
-radius = 52.03845
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
+size = Vector2(32, 67)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
 atlas = ExtResource("2_kyqiw")
@@ -805,14 +805,164 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyqiw"]
 radius = 102.044106
 
+[sub_resource type="Animation" id="Animation_gntrk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dewec"]
+resource_name = "Sword_Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.1415927, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_5ixxa"]
+resource_name = "Sword_DownLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.9269907, 3.9269907]
+}
+
+[sub_resource type="Animation" id="Animation_nn08x"]
+resource_name = "Sword_DownRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.008333334, 0, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.9269907, 2.3561945, 2.3561945]
+}
+
+[sub_resource type="Animation" id="Animation_52ee3"]
+resource_name = "Sword_Left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.712389, 4.712389]
+}
+
+[sub_resource type="Animation" id="Animation_bhhdu"]
+resource_name = "Sword_Right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [7.8540783, 7.8540783]
+}
+
+[sub_resource type="Animation" id="Animation_megsn"]
+resource_name = "Sword_Up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.2831855, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_yoq75"]
+resource_name = "Sword_UpLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.497787, 5.497787]
+}
+
+[sub_resource type="Animation" id="Animation_ksbbd"]
+resource_name = "Sword_UpRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [7.0686464, 7.0686464]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ixxa"]
+_data = {
+&"RESET": SubResource("Animation_gntrk"),
+&"Sword_Down": SubResource("Animation_dewec"),
+&"Sword_DownLeft": SubResource("Animation_5ixxa"),
+&"Sword_DownRight": SubResource("Animation_nn08x"),
+&"Sword_Left": SubResource("Animation_52ee3"),
+&"Sword_Right": SubResource("Animation_bhhdu"),
+&"Sword_Up": SubResource("Animation_megsn"),
+&"Sword_UpLeft": SubResource("Animation_yoq75"),
+&"Sword_UpRight": SubResource("Animation_ksbbd")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
 size = Vector2(163.5, 109.75)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=545131653]
+collision_mask = 129
 script = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1149845236]
-shape = SubResource("CircleShape2D_kpjcp")
+position = Vector2(-2, 14.5)
+shape = SubResource("RectangleShape2D_gntrk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
 texture_filter = 1
@@ -833,11 +983,13 @@ wait_time = 0.7
 shape = SubResource("CircleShape2D_kyqiw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=761806485]
+libraries/ = SubResource("AnimationLibrary_5ixxa")
 
 [node name="Sword_Attack" type="Area2D" parent="." unique_id=132728866]
+position = Vector2(0, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
-position = Vector2(0, -35)
+position = Vector2(0, -60)
 shape = SubResource("RectangleShape2D_kyqiw")
 
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
