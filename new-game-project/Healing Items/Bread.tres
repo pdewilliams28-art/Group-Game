@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Healing_Items" format=3 uid="uid://d3hl3no81clvl"]
+
+[ext_resource type="Script" uid="uid://cx0mt5xib1miq" path="res://new_script.gd" id="1_xjal7"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_jqek8"]
+
+[resource]
+script = ExtResource("1_xjal7")
+texture = ExtResource("2_jqek8")
+label = " Potion"
+description = "The Potion"
+metadata/_custom_type_script = "uid://cx0mt5xib1miq"

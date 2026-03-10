@@ -560,13 +560,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
 size = Vector2(163.5, 109.75)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gntrk"]
+radius = 52.153618
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=545131653]
 collision_mask = 129
 script = ExtResource("1_rpqav")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1149845236]
-position = Vector2(-2, 14.5)
-shape = SubResource("RectangleShape2D_gntrk")
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1149845236]
+shape = SubResource("CircleShape2D_kpjcp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
 texture_filter = 1
@@ -592,9 +594,12 @@ libraries/ = SubResource("AnimationLibrary_5ixxa")
 [node name="Sword_Attack" type="Area2D" parent="." unique_id=132728866]
 position = Vector2(0, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
-position = Vector2(0, -60)
+[node name="Hitbox" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
+position = Vector2(0, -35)
 shape = SubResource("RectangleShape2D_kyqiw")
+
+[node name="Detection box" type="CollisionShape2D" parent="." unique_id=399850425]
+shape = SubResource("CircleShape2D_gntrk")
 
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
