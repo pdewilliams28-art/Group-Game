@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://de365qfa8dxaq"
-path="res://.godot/imported/blocks-serif.ttf-31026ccce7d3364c4433628b2fbd11d8.fontdata"
+path="res://.godot/imported/blocks-serif.ttf-0dbe15cbd7666ad9baa6e1a76472b138.fontdata"
 
 [deps]
 
-source_file="res://blocks-serif.ttf"
-dest_files=["res://.godot/imported/blocks-serif.ttf-31026ccce7d3364c4433628b2fbd11d8.fontdata"]
+source_file="res://Fonts/blocks-serif.ttf"
+dest_files=["res://.godot/imported/blocks-serif.ttf-0dbe15cbd7666ad9baa6e1a76472b138.fontdata"]
 
 [params]
 

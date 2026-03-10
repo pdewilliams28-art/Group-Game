@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://rl5ox1sdjrjt"]
+
+[ext_resource type="Script" uid="uid://cfymeidxwhhr3" path="res://healing_items.gd" id="1_j2hg4"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_pfel1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brsep"]
+
+[node name="Healing_Items" type="Area2D" unique_id=1356097618]
+script = ExtResource("1_j2hg4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=868893380]
+texture = ExtResource("2_pfel1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=855800660]
+shape = SubResource("CircleShape2D_brsep")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1748905764]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1757865334]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
