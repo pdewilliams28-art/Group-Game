@@ -1,8 +1,18 @@
 extends CharacterBody2D
+@export var attributes: Enemy_resource
+@onready var sprite : Sprite2D = $Sprite2D
 
-@export var speed = 300.0
+var speed: float
 var target: Node2D
-
+var damage: int
+var health: int
+var knockback: float
+func _ready() -> void:
+	speed = attributes.speed
+	sprite.texture = attributes.texture
+	knockback = attributes.knockback
+	damage = attributes.damage
+	health = attributes.health
 func _physics_process(delta: float) -> void:
 	if target:
 		chase_target()

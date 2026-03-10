@@ -2,6 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="1_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://placeholder_enemy.tscn" id="2_6uqi0"]
+[ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_6uqi0"]
+[ext_resource type="Texture2D" uid="uid://bomeqo6nebn58" path="res://Sprites/Enemy_Placeholder_Sprite.png" id="4_ppyta"]
+
+[sub_resource type="Resource" id="Resource_ppyta"]
+script = ExtResource("3_6uqi0")
+health = 10
+speed = 300.0
+damage = 10
+knockback = 3.5
+texture = ExtResource("4_ppyta")
+metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 
 [node name="Node2D" type="Node2D" unique_id=1866132684]
 
@@ -10,3 +21,4 @@
 [node name="Placeholder Enemy" parent="." unique_id=1486502611 instance=ExtResource("2_6uqi0")]
 position = Vector2(570, 171)
 scale = Vector2(5.4399986, 5.4399986)
+attributes = SubResource("Resource_ppyta")
