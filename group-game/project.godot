@@ -22,6 +22,7 @@ attributes="*uid://d3vbhsf1uu6bd"
 [global_group]
 
 Interactable="Interactables: notes, chests, maps, etc."
+Enemy="any object that can chase and deal damage to the player"
 
 [input]
 

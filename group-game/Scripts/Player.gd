@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		dodge_cooldown = true
 		$Dodge_Timer.start()
 		$Dodge_Cooldown.start()
-		$Hurtbox.disabled = true
+		%Hurtbox.disabled = true
 		if $AnimatedSprite2D.animation == "Up":
 			velocity = Vector2(0, -1000)
 		elif $AnimatedSprite2D.animation == "UpLeft":
@@ -106,7 +106,7 @@ func _physics_process(delta: float) -> void:
 		direction = 0
 	if Input.is_action_just_released("Right") and direction == 4:
 		direction = 0
-	print($AnimatedSprite2D.animation)
+	#print($AnimatedSprite2D.animation)
 	move_and_slide()
 	
 
@@ -143,7 +143,7 @@ func _on_dodge_timer_timeout() -> void:
 
 func _on_dodge_cooldown_timeout() -> void:
 	dodge_cooldown = false
-	$Hurtbox.disabled = false
+	%Hurtbox.disabled = false
 
 
 func _on_interaction_range_body_entered(body: Node2D) -> void:
@@ -154,3 +154,11 @@ func _on_interaction_range_body_entered(body: Node2D) -> void:
 
 func _on_interaction_range_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
+
+
+
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		velocity += Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40)

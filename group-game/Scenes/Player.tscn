@@ -564,6 +564,9 @@ height = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gntrk"]
 radius = 52.153618
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dewec"]
+radius = 28.01785
+
 [node name="Player" type="CharacterBody2D" unique_id=545131653]
 collision_mask = 129
 script = ExtResource("1_rpqav")
@@ -596,8 +599,12 @@ position = Vector2(0, 16)
 position = Vector2(0, -35)
 shape = SubResource("RectangleShape2D_kyqiw")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=199651265]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1993944495]
 position = Vector2(0, 10)
+collision_mask = 2
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox" unique_id=199651265]
+unique_name_in_owner = true
 shape = SubResource("CapsuleShape2D_gntrk")
 
 [node name="Detection_Range" type="Area2D" parent="." unique_id=2071541933]
@@ -607,7 +614,12 @@ collision_mask = 4
 [node name="Detection box" type="CollisionShape2D" parent="Detection_Range" unique_id=399850425]
 shape = SubResource("CircleShape2D_gntrk")
 
+[node name="enemy detection box" type="CollisionShape2D" parent="." unique_id=185235837]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_dewec")
+
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="body_entered" from="Interaction_Range" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="Interaction_Range" to="." method="_on_interaction_range_body_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
