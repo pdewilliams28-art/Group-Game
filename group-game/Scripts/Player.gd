@@ -143,7 +143,7 @@ func _on_dodge_timer_timeout() -> void:
 
 func _on_dodge_cooldown_timeout() -> void:
 	dodge_cooldown = false
-	%Hurtbox.disabled = false
+	#%Hurtbox.disabled = false
 
 
 func _on_interaction_range_body_entered(body: Node2D) -> void:
@@ -161,4 +161,8 @@ func _on_interaction_range_body_exited(body: Node2D) -> void:
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
+		if %Hurtbox.disabled == true:
+			print("yay :D")
 		velocity += Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40)
+		%Hurtbox.disabled = true
+		
