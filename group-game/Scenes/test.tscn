@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctdp4lejrp7lw"]
 
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="1_8uh7m"]
-[ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://placeholder_enemy.tscn" id="2_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="2_6uqi0"]
 [ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_6uqi0"]
 [ext_resource type="Texture2D" uid="uid://bomeqo6nebn58" path="res://Sprites/Enemy_Placeholder_Sprite.png" id="4_ppyta"]
 [ext_resource type="Texture2D" uid="uid://cbn7uxwcwrf8h" path="res://Sprites/Blue_Fire_Sprite.png" id="5_ykrsh"]

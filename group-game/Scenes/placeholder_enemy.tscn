@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://db7y48rt5wr8g"]
 
-[ext_resource type="Script" uid="uid://cetdix6hdkwu3" path="res://placeholder_enemy.gd" id="1_8ayjk"]
+[ext_resource type="Script" uid="uid://cetdix6hdkwu3" path="res://Scripts/placeholder_enemy.gd" id="1_8ayjk"]
+[ext_resource type="Texture2D" uid="uid://bomeqo6nebn58" path="res://Sprites/Enemy_Placeholder_Sprite.png" id="2_8ayjk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ayjk"]
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nqvvf"]
-radius = 82.29824
+radius = 20.417286
 
 [node name="Placeholder Enemy" type="CharacterBody2D" unique_id=1486502611]
 collision_layer = 2
@@ -15,15 +16,20 @@ script = ExtResource("1_8ayjk")
 
 [node name="Hitbox and Hurtbox" type="CollisionShape2D" parent="." unique_id=1417709408]
 unique_name_in_owner = true
+scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_8ayjk")
 
 [node name="Detection Range" type="Area2D" parent="." unique_id=528071591]
+scale = Vector2(5, 5)
 
 [node name="Detection Collision" type="CollisionShape2D" parent="Detection Range" unique_id=120890191]
 unique_name_in_owner = true
+scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_nqvvf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=776661274]
+scale = Vector2(5, 5)
+texture = ExtResource("2_8ayjk")
 
 [connection signal="body_entered" from="Detection Range" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="Detection Range" to="." method="_on_detection_range_body_exited"]
