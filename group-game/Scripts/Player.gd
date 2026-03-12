@@ -1,12 +1,13 @@
 extends CharacterBody2D
 class_name Player
 
-var SPEED = 350.0
+var SPEED: float = 350.0
 const JUMP_VELOCITY = -400.0
 const accel = 100
-var dodge = false
-var dodge_cooldown = false
-var interactable_trigger = false
+var dodge: bool = false
+var dodge_cooldown: bool = false
+var interactable_trigger: bool = false
+var Invincible: bool = false
 var interactable = NAN
 var direction: int = 0
 
@@ -108,8 +109,20 @@ func _physics_process(delta: float) -> void:
 		direction = 0
 	#print($AnimatedSprite2D.animation)
 	move_and_slide()
-	
-
+func _process(delta: float) -> void:
+	var bodies = $Hurtbox.get_overlapping_bodies()
+	for body in bodies:
+		#print("hit!")
+		if body.is_in_group("Enemy"):
+			if Invincible == false:
+				if sqrt(pow(((position.x-body.position.x)*40),2) + pow(((position.y-body.position.y)*40),2)) >= 1000:
+					velocity += Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40)
+					print(Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40))
+					Invincible = true
+					$Invincibility_Timer.start()
+				else:
+					#add velocity in random direction
+					pass
 func Dodge():
 	dodge = true
 	dodge_cooldown = true
@@ -143,7 +156,7 @@ func _on_dodge_timer_timeout() -> void:
 
 func _on_dodge_cooldown_timeout() -> void:
 	dodge_cooldown = false
-	#%Hurtbox.disabled = false
+	%Hurtbox.disabled = false
 
 
 func _on_interaction_range_body_entered(body: Node2D) -> void:
@@ -157,12 +170,5 @@ func _on_interaction_range_body_exited(body: Node2D) -> void:
 
 
 
-
-
-func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
-		if %Hurtbox.disabled == true:
-			print("yay :D")
-		velocity += Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40)
-		%Hurtbox.disabled = true
-		
+func _on_invincibility_timer_timeout() -> void:
+	Invincible = false

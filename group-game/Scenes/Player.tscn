@@ -584,6 +584,9 @@ wait_time = 0.5
 [node name="Dodge_Cooldown" type="Timer" parent="." unique_id=2000547627]
 wait_time = 0.7
 
+[node name="Invincibility_Timer" type="Timer" parent="." unique_id=1818204699]
+one_shot = true
+
 [node name="Interaction_Range" type="Area2D" parent="." unique_id=1513192852]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_Range" unique_id=1346057077]
@@ -620,6 +623,7 @@ shape = SubResource("CircleShape2D_dewec")
 
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
+[connection signal="timeout" from="Invincibility_Timer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="body_entered" from="Interaction_Range" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="Interaction_Range" to="." method="_on_interaction_range_body_exited"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
