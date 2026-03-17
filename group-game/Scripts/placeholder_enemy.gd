@@ -1,7 +1,6 @@
 extends CharacterBody2D
 @export var attributes: Enemy_resource
 @onready var sprite : Sprite2D = $Sprite2D
-
 var speed: float
 var target: Node2D
 var damage: int
@@ -13,7 +12,6 @@ func _ready() -> void:
 	health = attributes.health
 	knockback = attributes.knockback
 	sprite.texture = attributes.texture
-
 
 func _physics_process(delta: float) -> void:
 	if target:
@@ -30,7 +28,7 @@ func chase_target():
 func _on_detection_range_body_entered(body: Node2D) -> void:
 	if body is Player:
 		target = body
-
+	
 func _on_detection_range_body_exited(body: Node2D) -> void:
 	if body is Player:
 		target = null

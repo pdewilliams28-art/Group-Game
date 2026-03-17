@@ -621,6 +621,9 @@ shape = SubResource("CircleShape2D_gntrk")
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_dewec")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1108091760]
+volume_db = 24.0
+
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="timeout" from="Invincibility_Timer" to="." method="_on_invincibility_timer_timeout"]

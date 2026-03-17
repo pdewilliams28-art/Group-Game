@@ -10,8 +10,8 @@ var interactable_trigger: bool = false
 var Invincible: bool = false
 var interactable = NAN
 var direction: int = 0
-
-
+var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
+@onready var audio_player = $AudioStreamPlayer
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false:
 		dodge = true
@@ -121,6 +121,7 @@ func _process(delta: float) -> void:
 					print(velocity)
 					Invincible = true
 					$Invincibility_Timer.start()
+					playsound_and_wait(example_sound)
 				else:
 					health -= body.damage
 					#add velocity in random direction
@@ -129,6 +130,7 @@ func _process(delta: float) -> void:
 					print(velocity)
 					Invincible = true
 					$Invincibility_Timer.start()
+					playsound_and_wait(example_sound)
 	if health <= 0:
 		get_tree().call_deferred("reload_current_scene")
 func Dodge():
@@ -180,3 +182,8 @@ func _on_interaction_range_body_exited(body: Node2D) -> void:
 
 func _on_invincibility_timer_timeout() -> void:
 	Invincible = false
+func playsound_and_wait(sound):
+	audio_player.stream = sound
+	var audio_length = audio_player.stream.get_length()
+	audio_player.play()
+	await get_tree().create_timer(audio_length +0.1).timeout
