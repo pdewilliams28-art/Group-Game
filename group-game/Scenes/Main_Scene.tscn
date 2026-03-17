@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_4y1r4"]
 [ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_tkmsp"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
+[ext_resource type="Texture2D" uid="uid://bomeqo6nebn58" path="res://Sprites/Enemy_Placeholder_Sprite.png" id="4_6bry8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
 texture = ExtResource("1_7fr83")
@@ -713,7 +714,9 @@ sources/1 = SubResource("TileSetAtlasSource_5yw3w")
 
 [sub_resource type="Resource" id="Resource_6bry8"]
 script = ExtResource("3_4y1r4")
-knockback = 100.0
+speed = 10.0
+knockback = 40.0
+texture = ExtResource("4_6bry8")
 metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 
 [node name="Node2D" type="Node2D" unique_id=1616731312]
