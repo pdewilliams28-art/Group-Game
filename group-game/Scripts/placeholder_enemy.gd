@@ -6,7 +6,7 @@ var speed: float = 300
 var target: Node2D
 var damage: int = 1
 var health: int = 3
-var knockback: float = 3
+var knockback: float = 40
 func _ready() -> void:
 	pass
 

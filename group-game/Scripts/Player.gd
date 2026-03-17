@@ -115,14 +115,18 @@ func _process(delta: float) -> void:
 		#print("hit!")
 		if body.is_in_group("Enemy"):
 			if Invincible == false:
-				if sqrt(pow(((position.x-body.position.x)*40),2) + pow(((position.y-body.position.y)*40),2)) >= 1000:
-					velocity += Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40)
-					print(Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40))
+				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 50 *body.knockback:
+					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
+					print(velocity)
 					Invincible = true
 					$Invincibility_Timer.start()
 				else:
 					#add velocity in random direction
-					pass
+					var randv = randf_range(-PI,PI)
+					velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
+					print(velocity)
+					Invincible = true
+					$Invincibility_Timer.start()
 func Dodge():
 	dodge = true
 	dodge_cooldown = true
