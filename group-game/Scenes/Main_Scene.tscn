@@ -715,6 +715,7 @@ sources/1 = SubResource("TileSetAtlasSource_5yw3w")
 [sub_resource type="Resource" id="Resource_6bry8"]
 script = ExtResource("3_4y1r4")
 speed = 10.0
+damage = 200
 knockback = 40.0
 texture = ExtResource("4_6bry8")
 metadata/_custom_type_script = "uid://btt3ua54m0t7e"

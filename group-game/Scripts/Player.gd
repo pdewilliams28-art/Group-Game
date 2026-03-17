@@ -1,6 +1,6 @@
 extends CharacterBody2D
 class_name Player
-
+var health: int = 200
 var SPEED: float = 350.0
 const JUMP_VELOCITY = -400.0
 const accel = 100
@@ -116,17 +116,21 @@ func _process(delta: float) -> void:
 		if body.is_in_group("Enemy"):
 			if Invincible == false:
 				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 50 *body.knockback:
+					health -= body.damage
 					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
 					print(velocity)
 					Invincible = true
 					$Invincibility_Timer.start()
 				else:
+					health -= body.damage
 					#add velocity in random direction
 					var randv = randf_range(-PI,PI)
 					velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
 					print(velocity)
 					Invincible = true
 					$Invincibility_Timer.start()
+	if health <= 0:
+		get_tree().call_deferred("reload_current_scene")
 func Dodge():
 	dodge = true
 	dodge_cooldown = true
