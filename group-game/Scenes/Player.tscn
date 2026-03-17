@@ -576,7 +576,7 @@ texture_filter = 1
 position = Vector2(0.99999994, -19.999998)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"Down"
+animation = &"Up"
 
 [node name="Dodge_Timer" type="Timer" parent="." unique_id=2078185050]
 wait_time = 0.5
