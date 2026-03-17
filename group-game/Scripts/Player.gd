@@ -10,32 +10,14 @@ var interactable_trigger: bool = false
 var Invincible: bool = false
 var interactable = NAN
 var direction: int = 0
+var attacking = false
+var stagger = false
 
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false:
-		dodge = true
-		dodge_cooldown = true
-		$Dodge_Timer.start()
-		$Dodge_Cooldown.start()
-		%Hurtbox.disabled = true
-		if $AnimatedSprite2D.animation == "Up":
-			velocity = Vector2(0, -1000)
-		elif $AnimatedSprite2D.animation == "UpLeft":
-			velocity = Vector2(-707, -707)
-		elif $AnimatedSprite2D.animation == "UpRight":
-			velocity = Vector2(707, -707)
-		elif $AnimatedSprite2D.animation == "Down":
-			velocity = Vector2(0, 1000)
-		elif $AnimatedSprite2D.animation == "DownLeft":
-			velocity = Vector2(-707, 707)
-		elif $AnimatedSprite2D.animation == "DownRight":
-			velocity = Vector2(707, 707)
-		elif $AnimatedSprite2D.animation == "Left":
-			velocity = Vector2(-1000, 0)
-		elif $AnimatedSprite2D.animation == "Right":
-			velocity = Vector2(1000, 0)
-	if dodge == false:
+func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false and attacking == false:
+		Dodge()
+	if dodge == false and attacking == false:
 		var move_vector: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
 		velocity = velocity.move_toward(move_vector * SPEED, accel)
 		if direction == 1:
@@ -107,9 +89,30 @@ func _physics_process(delta: float) -> void:
 		direction = 0
 	if Input.is_action_just_released("Right") and direction == 4:
 		direction = 0
-	#print($AnimatedSprite2D.animation)
+	if Input.is_action_just_pressed("Attack") and attacking == false and stagger == false and dodge == false:
+		Attack()
+	print($AnimatedSprite2D.animation)
 	move_and_slide()
-func _process(delta: float) -> void:
+	
+
+func Attack():
+	attacking = true
+	$Attack_Timer.start()
+	print(attacking)
+	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
+		$AnimationPlayer.play("Sword_Up")
+		$AnimatedSprite2D.play("Attack_Up")
+	elif $AnimatedSprite2D.animation == "Down" or $AnimatedSprite2D.animation == "Down_Idle":
+		$AnimationPlayer.play("Sword_Down")
+		$AnimatedSprite2D.play("Attack_Down")
+	elif $AnimatedSprite2D.animation == "Left" or $AnimatedSprite2D.animation == "Left_Idle":
+		$AnimationPlayer.play("Sword_Left")
+		$AnimatedSprite2D.play("Attack_Left")
+	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
+		$AnimationPlayer.play("Sword_Right")
+		$AnimatedSprite2D.play("Attack_Right")
+
+func _process(_delta: float) -> void:
 	var bodies = $Hurtbox.get_overlapping_bodies()
 	for body in bodies:
 		#print("hit!")
@@ -120,6 +123,7 @@ func _process(delta: float) -> void:
 					print(Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40))
 					Invincible = true
 					$Invincibility_Timer.start()
+					stagger = true
 				else:
 					#add velocity in random direction
 					pass
@@ -128,7 +132,7 @@ func Dodge():
 	dodge_cooldown = true
 	$Dodge_Timer.start()
 	$Dodge_Cooldown.start()
-	$CollisionShape2D.disabled = true
+	$Hurtbox/Hurtbox.disabled = true
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
 		velocity = Vector2(0, -1000)
 		$AnimatedSprite2D.play("Roll_Up")
@@ -165,6 +169,7 @@ func _on_interaction_range_body_entered(body: Node2D) -> void:
 	
 
 
+@warning_ignore("unused_parameter")
 func _on_interaction_range_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
 
@@ -172,3 +177,8 @@ func _on_interaction_range_body_exited(body: Node2D) -> void:
 
 func _on_invincibility_timer_timeout() -> void:
 	Invincible = false
+	stagger = false
+
+
+func _on_attack_timer_timeout() -> void:
+	attacking = false

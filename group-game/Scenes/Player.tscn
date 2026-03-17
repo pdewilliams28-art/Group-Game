@@ -198,6 +198,26 @@ region = Rect2(32, 96, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rpqav"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attack_Down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Attack_Left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Attack_Right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Attack_Up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gntrk")
@@ -420,6 +440,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_dewec"]
 resource_name = "Sword_Down"
@@ -434,6 +466,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [3.1415927, 3.1415927]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.31666666, 0.71666664, 1.0166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
 }
 
 [sub_resource type="Animation" id="Animation_5ixxa"]
@@ -480,6 +524,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [4.712389, 4.712389]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.31666666, 0.71666664, 1.0166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
 
 [sub_resource type="Animation" id="Animation_bhhdu"]
 resource_name = "Sword_Right"
@@ -495,6 +551,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [7.8540783, 7.8540783]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.31666666, 0.71666664, 1.0166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
 
 [sub_resource type="Animation" id="Animation_megsn"]
 resource_name = "Sword_Up"
@@ -509,6 +577,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [6.2831855, 6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.016666668, 0.33333334, 0.7333333, 1.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
 }
 
 [sub_resource type="Animation" id="Animation_yoq75"]
@@ -555,7 +635,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(163.5, 109.75)
+size = Vector2(262.75, 109.75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntrk"]
 radius = 28.0
@@ -576,7 +656,7 @@ texture_filter = 1
 position = Vector2(0.99999994, -19.999998)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"Down"
+animation = &"Attack_Right"
 
 [node name="Dodge_Timer" type="Timer" parent="." unique_id=2078185050]
 wait_time = 0.5
@@ -597,9 +677,11 @@ libraries/ = SubResource("AnimationLibrary_5ixxa")
 
 [node name="Sword_Attack" type="Area2D" parent="." unique_id=132728866]
 position = Vector2(0, 16)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
-position = Vector2(0, -35)
+position = Vector2(-3.059797e-06, -35)
 shape = SubResource("RectangleShape2D_kyqiw")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1993944495]
@@ -621,9 +703,13 @@ shape = SubResource("CircleShape2D_gntrk")
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_dewec")
 
+[node name="Attack_Timer" type="Timer" parent="." unique_id=861477607]
+wait_time = 1.2
+
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="timeout" from="Invincibility_Timer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="body_entered" from="Interaction_Range" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="Interaction_Range" to="." method="_on_interaction_range_body_exited"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
