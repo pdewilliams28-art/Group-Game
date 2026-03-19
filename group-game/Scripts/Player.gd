@@ -10,7 +10,7 @@ var interactable_trigger: bool = false
 var Invincible: bool = false
 var interactable = NAN
 var direction: int = 0
-var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
+var example_sound = preload("res://Sounds/johnnybacon156-fah-469417.mp3")
 @onready var audio_player = $AudioStreamPlayer
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false:
