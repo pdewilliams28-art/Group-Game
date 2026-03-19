@@ -91,7 +91,6 @@ func _physics_process(_delta: float) -> void:
 		direction = 0
 	if Input.is_action_just_pressed("Attack") and attacking == false and stagger == false and dodge == false:
 		Attack()
-	print($AnimatedSprite2D.animation)
 	move_and_slide()
 	
 
@@ -99,6 +98,8 @@ func Attack():
 	attacking = true
 	$Attack_Timer.start()
 	print(attacking)
+	$Sword_Attack/Hitbox.disabled = false
+	velocity = Vector2(0, 0)
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
 		$AnimationPlayer.play("Sword_Up")
 		$AnimatedSprite2D.play("Attack_Up")
@@ -182,3 +183,12 @@ func _on_invincibility_timer_timeout() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	attacking = false
+	$Sword_Attack/Hitbox.disabled = true
+	if $AnimatedSprite2D.animation == "Attack_Up":
+		$AnimatedSprite2D.play("Up_Idle")
+	if $AnimatedSprite2D.animation == "Attack_Down":
+		$AnimatedSprite2D.play("Down_Idle")
+	if $AnimatedSprite2D.animation == "Attack_Left":
+		$AnimatedSprite2D.play("Left_Idle")
+	if $AnimatedSprite2D.animation == "Attack_Right":
+		$AnimatedSprite2D.play("Right_Idle")
