@@ -4,4 +4,4 @@ class_name Enemy_resource
 @export var speed: float
 @export var damage: int
 @export var knockback: float
-@export var texture: Texture2D
+@export var texture: SpriteFrames

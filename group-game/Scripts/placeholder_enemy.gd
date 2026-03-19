@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @export var attributes: Enemy_resource
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $"Health Bar"
 var speed: float
 var target: Node2D
@@ -14,20 +14,23 @@ func _ready() -> void:
 	health = attributes.health
 	max_health = health
 	knockback = attributes.knockback
-	sprite.texture = attributes.texture
+	sprite.sprite_frames = attributes.texture
 
 func _physics_process(delta: float) -> void:
 	if target:
 		chase_target()
 	else:
 		velocity = Vector2.ZERO
+		$AnimatedSprite2D.stop()
 	move_and_slide()
 func chase_target():
 	var distance_to_player: Vector2
 	distance_to_player = target.global_position - global_position
 	var direction_normal: Vector2 = distance_to_player.normalized()
 	velocity = direction_normal * speed
-
+	$AnimatedSprite2D.play()
+	
+	
 func _on_detection_range_body_entered(body: Node2D) -> void:
 	if body is Player:
 		target = body
