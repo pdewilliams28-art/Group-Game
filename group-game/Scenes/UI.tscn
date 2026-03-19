@@ -8,7 +8,6 @@ font = ExtResource("2_dewlx")
 font_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" unique_id=62056447]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,14 +16,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Paper1_png" type="Sprite2D" parent="." unique_id=416289822]
-visible = false
 texture_filter = 1
 position = Vector2(240, 320)
 scale = Vector2(9, 9)
 texture = ExtResource("1_nxvpl")
 
 [node name="Label" type="Label" parent="." unique_id=808374303]
-visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 432.0
@@ -34,7 +31,6 @@ offset_bottom = 480.0
 label_settings = SubResource("LabelSettings_hfhsn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1684028072]
-visible = false
 z_index = -3
 layout_mode = 0
 offset_left = 432.0

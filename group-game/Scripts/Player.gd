@@ -1,6 +1,6 @@
 extends CharacterBody2D
 class_name Player
-
+var health: int = 200
 var SPEED: float = 350.0
 const JUMP_VELOCITY = -400.0
 const accel = 100
@@ -18,6 +18,32 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false and attacking == false:
 		Dodge()
 	if dodge == false and attacking == false:
+var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
+@onready var audio_player = $AudioStreamPlayer
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false:
+		dodge = true
+		dodge_cooldown = true
+		$Dodge_Timer.start()
+		$Dodge_Cooldown.start()
+		%Hurtbox.disabled = true
+		if $AnimatedSprite2D.animation == "Up":
+			velocity = Vector2(0, -1000)
+		elif $AnimatedSprite2D.animation == "UpLeft":
+			velocity = Vector2(-707, -707)
+		elif $AnimatedSprite2D.animation == "UpRight":
+			velocity = Vector2(707, -707)
+		elif $AnimatedSprite2D.animation == "Down":
+			velocity = Vector2(0, 1000)
+		elif $AnimatedSprite2D.animation == "DownLeft":
+			velocity = Vector2(-707, 707)
+		elif $AnimatedSprite2D.animation == "DownRight":
+			velocity = Vector2(707, 707)
+		elif $AnimatedSprite2D.animation == "Left":
+			velocity = Vector2(-1000, 0)
+		elif $AnimatedSprite2D.animation == "Right":
+			velocity = Vector2(1000, 0)
+	if dodge == false:
 		var move_vector: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
 		velocity = velocity.move_toward(move_vector * SPEED, accel)
 		if direction == 1:
@@ -119,15 +145,25 @@ func _process(_delta: float) -> void:
 		#print("hit!")
 		if body.is_in_group("Enemy"):
 			if Invincible == false:
-				if sqrt(pow(((position.x-body.position.x)*40),2) + pow(((position.y-body.position.y)*40),2)) >= 1000:
-					velocity += Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40)
-					print(Vector2((position.x-body.position.x)*40,(position.y-body.position.y)*40))
+				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
+					health -= body.damage
+					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
+					print(velocity)
 					Invincible = true
 					$Invincibility_Timer.start()
 					stagger = true
+					playsound_and_wait(example_sound)
 				else:
+					health -= body.damage
 					#add velocity in random direction
-					pass
+					var randv = randf_range(-PI,PI)
+					velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
+					print(velocity)
+					Invincible = true
+					$Invincibility_Timer.start()
+					playsound_and_wait(example_sound)
+	if health <= 0:
+		get_tree().call_deferred("reload_current_scene")
 func Dodge():
 	dodge = true
 	dodge_cooldown = true
@@ -192,3 +228,8 @@ func _on_attack_timer_timeout() -> void:
 		$AnimatedSprite2D.play("Left_Idle")
 	if $AnimatedSprite2D.animation == "Attack_Right":
 		$AnimatedSprite2D.play("Right_Idle")
+func playsound_and_wait(sound):
+	audio_player.stream = sound
+	var audio_length = audio_player.stream.get_length()
+	audio_player.play()
+	await get_tree().create_timer(audio_length +0.1).timeout

@@ -1,8 +1,10 @@
 [gd_scene format=4 uid="uid://cgihykud333ql"]
 
 [ext_resource type="Texture2D" uid="uid://ba65hsxq7xtgh" path="res://Sprites/Tileset.png" id="1_7fr83"]
+[ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_4y1r4"]
 [ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_tkmsp"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
+[ext_resource type="Texture2D" uid="uid://bomeqo6nebn58" path="res://Sprites/Enemy_Placeholder_Sprite.png" id="4_6bry8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
 texture = ExtResource("1_7fr83")
@@ -710,6 +712,15 @@ terrain_set_0/terrain_1/name = "Lava 1"
 terrain_set_0/terrain_1/color = Color(0.8784314, 0.3254902, 0.043137256, 1)
 sources/1 = SubResource("TileSetAtlasSource_5yw3w")
 
+[sub_resource type="Resource" id="Resource_6bry8"]
+script = ExtResource("3_4y1r4")
+health = 1000
+speed = 200.0
+damage = 50
+knockback = 25.0
+texture = ExtResource("4_6bry8")
+metadata/_custom_type_script = "uid://btt3ua54m0t7e"
+
 [node name="Node2D" type="Node2D" unique_id=1616731312]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=504227716]
@@ -720,7 +731,8 @@ tile_map_data = PackedByteArray("AAAzAB0AAQAbAAEAAAAzABwAAQAbAAEAAAAzABsAAQAeAAA
 tile_set = SubResource("TileSet_qtktj")
 
 [node name="Placeholder Enemy" parent="." unique_id=1486502611 instance=ExtResource("3_tkmsp")]
-position = Vector2(-806, -81)
+position = Vector2(-806, -80)
+attributes = SubResource("Resource_6bry8")
 
 [node name="Player" parent="." unique_id=1014740986 instance=ExtResource("4_4y1r4")]
 position = Vector2(477, 342)

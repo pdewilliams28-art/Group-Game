@@ -1,15 +1,20 @@
 extends CharacterBody2D
 @export var attributes: Enemy_resource
 @onready var sprite : Sprite2D = $Sprite2D
-
-var speed: float = 300
+@onready var health_bar: TextureProgressBar = $"Health Bar"
+var speed: float
 var target: Node2D
-var damage: int = 1
-var health: int = 3
-var knockback: float = 3
+var damage: int
+var health: int
+var max_health: int
+var knockback: float
 func _ready() -> void:
-	pass
-
+	speed = attributes.speed
+	damage = attributes.damage
+	health = attributes.health
+	max_health = health
+	knockback = attributes.knockback
+	sprite.texture = attributes.texture
 
 func _physics_process(delta: float) -> void:
 	if target:
@@ -26,7 +31,7 @@ func chase_target():
 func _on_detection_range_body_entered(body: Node2D) -> void:
 	if body is Player:
 		target = body
-
+	
 func _on_detection_range_body_exited(body: Node2D) -> void:
 	if body is Player:
 		target = null
@@ -36,3 +41,18 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.name == "Sword_Attack":
 		health -= 1
 		print(health)
+func _process(delta: float) -> void:
+	update_health_bar(health, max_health)
+	if health > max_health:
+		health = max_health
+	health_bar.max_value = max_health
+	health_bar.value = health - max_health/10
+	if Input.is_action_just_pressed("Dodge"):
+		health -= 10
+func update_health_bar(current_hp, max_hp):
+	var health_pct = float(current_hp) / max_hp
+	health_bar.value = current_hp
+	
+	# lerp(Color_at_0, Color_at_1, weight)
+	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
+	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct-.3)
