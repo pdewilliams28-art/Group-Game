@@ -12,38 +12,13 @@ var interactable = NAN
 var direction: int = 0
 var attacking = false
 var stagger = false
-
+var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
+@onready var audio_player = $AudioStreamPlayer
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false and attacking == false:
 		Dodge()
 	if dodge == false and attacking == false:
-var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
-@onready var audio_player = $AudioStreamPlayer
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false:
-		dodge = true
-		dodge_cooldown = true
-		$Dodge_Timer.start()
-		$Dodge_Cooldown.start()
-		%Hurtbox.disabled = true
-		if $AnimatedSprite2D.animation == "Up":
-			velocity = Vector2(0, -1000)
-		elif $AnimatedSprite2D.animation == "UpLeft":
-			velocity = Vector2(-707, -707)
-		elif $AnimatedSprite2D.animation == "UpRight":
-			velocity = Vector2(707, -707)
-		elif $AnimatedSprite2D.animation == "Down":
-			velocity = Vector2(0, 1000)
-		elif $AnimatedSprite2D.animation == "DownLeft":
-			velocity = Vector2(-707, 707)
-		elif $AnimatedSprite2D.animation == "DownRight":
-			velocity = Vector2(707, 707)
-		elif $AnimatedSprite2D.animation == "Left":
-			velocity = Vector2(-1000, 0)
-		elif $AnimatedSprite2D.animation == "Right":
-			velocity = Vector2(1000, 0)
-	if dodge == false:
 		var move_vector: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
 		velocity = velocity.move_toward(move_vector * SPEED, accel)
 		if direction == 1:
