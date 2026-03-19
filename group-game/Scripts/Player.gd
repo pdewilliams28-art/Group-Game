@@ -115,7 +115,7 @@ func _process(delta: float) -> void:
 		#print("hit!")
 		if body.is_in_group("Enemy"):
 			if Invincible == false:
-				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 50 *body.knockback:
+				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
 					health -= body.damage
 					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
 					print(velocity)

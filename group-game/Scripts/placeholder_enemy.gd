@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	if health > max_health:
 		health = max_health
 	health_bar.max_value = max_health
-	health_bar.value = health
+	health_bar.value = health - max_health/10
 	if Input.is_action_just_pressed("Dodge"):
 		health -= 10
 func update_health_bar(current_hp, max_hp):
@@ -49,4 +49,4 @@ func update_health_bar(current_hp, max_hp):
 	
 	# lerp(Color_at_0, Color_at_1, weight)
 	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
-	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct)
+	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct-.3)
