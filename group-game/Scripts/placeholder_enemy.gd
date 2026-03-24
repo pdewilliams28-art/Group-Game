@@ -38,6 +38,12 @@ func _on_detection_range_body_entered(body: Node2D) -> void:
 func _on_detection_range_body_exited(body: Node2D) -> void:
 	if body is Player:
 		target = null
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.name == "Sword_Attack":
+		health -= 1
+		print(health)
 func _process(delta: float) -> void:
 	update_health_bar(health, max_health)
 	if health > max_health:
