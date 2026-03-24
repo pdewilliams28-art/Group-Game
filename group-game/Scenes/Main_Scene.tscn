@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_6bry8"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
 [ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="4_6bry8"]
-[ext_resource type="PackedScene" uid="uid://6ps3y5awj46j" path="res://Scenes/Blue_Magic_Fire.tscn" id="6_x2kcs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
 texture = ExtResource("1_7fr83")
@@ -818,6 +817,3 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="Placeholder Enemy" parent="." unique_id=1486502611 instance=ExtResource("3_6bry8")]
 attributes = SubResource("Resource_x2kcs")
-
-[node name="GPUParticles2D" parent="." unique_id=655227192 instance=ExtResource("6_x2kcs")]
-position = Vector2(699, 0)
