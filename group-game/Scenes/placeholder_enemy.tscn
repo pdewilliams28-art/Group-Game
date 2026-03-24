@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bairfw7c4iisx" path="res://Sprites/Health Bar Over.png" id="4_1g4ed"]
 [ext_resource type="Texture2D" uid="uid://bktytlqt00dkw" path="res://Sprites/Slime.png" id="5_jt8dh"]
 [ext_resource type="Texture2D" uid="uid://k22aogu6uhg1" path="res://Sprites/Health Bar Progress.png" id="5_rgx65"]
-[ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="6_1g4ed"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ayjk"]
 radius = 6.0
@@ -16,79 +15,47 @@ radius = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7bim"]
 radius = 31.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt8dh"]
+atlas = ExtResource("5_jt8dh")
+region = Rect2(0, 16, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1g4ed"]
 atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgx65"]
 atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cph4x"]
 atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 32, 16, 16)
+region = Rect2(0, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0ntd"]
 atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 48, 16, 16)
+region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxx34"]
 atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 64, 16, 16)
+region = Rect2(0, 96, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqglh"]
 atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 80, 16, 16)
+region = Rect2(0, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx2m3"]
 atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 96, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqv1k"]
-atlas = ExtResource("5_jt8dh")
-region = Rect2(0, 112, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hkms4"]
-animations = [{}]
-"frames": [{}]
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_1g4ed")
-
-
-
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cph4x"]
-atlas = ExtResource("6_1g4ed")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o0ntd"]
-atlas = ExtResource("6_1g4ed")
-region = Rect2(0, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxx34"]
-atlas = ExtResource("6_1g4ed")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iqglh"]
-atlas = ExtResource("6_1g4ed")
-region = Rect2(0, 64, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lx2m3"]
-atlas = ExtResource("6_1g4ed")
-region = Rect2(0, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqv1k"]
-atlas = ExtResource("6_1g4ed")
-region = Rect2(0, 96, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hkms4"]
-atlas = ExtResource("6_1g4ed")
-region = Rect2(0, 112, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hgdwk"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqv1k"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt8dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g4ed")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rgx65")
 }, {
@@ -106,16 +73,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lx2m3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mqv1k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hkms4")
 }],
 "loop": true,
 "name": &"default",
-"speed": 7.5
+"speed": 10.0
 }]
 
 [node name="Placeholder Enemy" type="CharacterBody2D" unique_id=1486502611 groups=["Enemy"]]
@@ -155,8 +116,10 @@ texture_over = ExtResource("4_1g4ed")
 texture_progress = ExtResource("5_rgx65")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1880400576]
-sprite_frames = SubResource("SpriteFrames_hkms4")
-frame_progress = 0.22382843
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(4.125, 4.125)
+sprite_frames = SubResource("SpriteFrames_mqv1k")
+frame_progress = 0.51351064
 
 [connection signal="body_entered" from="Detection Range" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="Detection Range" to="." method="_on_detection_range_body_exited"]

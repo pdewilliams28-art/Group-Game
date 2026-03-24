@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ba65hsxq7xtgh" path="res://Sprites/Tileset.png" id="1_7fr83"]
 [ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_4y1r4"]
-[ext_resource type="PackedScene" uid="uid://btjtxv2eyqdpp" path="res://Scenes/Red_Green_Magic_Fire.tscn" id="3_tkmsp"]
+[ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_6bry8"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
 [ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="4_6bry8"]
 
@@ -721,77 +721,77 @@ terrain_set_0/terrain_1/name = "Lava 1"
 terrain_set_0/terrain_1/color = Color(0.8784314, 0.3254902, 0.043137256, 1)
 sources/1 = SubResource("TileSetAtlasSource_5yw3w")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgx65"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bry8"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cph4x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2kcs"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o0ntd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l8qe"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxx34"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h23t"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iqglh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_06phl"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lx2m3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7evf"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqv1k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibde2"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hkms4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k7nw"]
 atlas = ExtResource("4_6bry8")
 region = Rect2(0, 112, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6bry8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_x2kcs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rgx65")
+"texture": SubResource("AtlasTexture_6bry8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cph4x")
+"texture": SubResource("AtlasTexture_x2kcs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o0ntd")
+"texture": SubResource("AtlasTexture_1l8qe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cxx34")
+"texture": SubResource("AtlasTexture_7h23t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iqglh")
+"texture": SubResource("AtlasTexture_06phl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lx2m3")
+"texture": SubResource("AtlasTexture_s7evf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mqv1k")
+"texture": SubResource("AtlasTexture_ibde2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hkms4")
+"texture": SubResource("AtlasTexture_0k7nw")
 }],
 "loop": true,
 "name": &"default",
-"speed": 7.5
+"speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_6bry8"]
+[sub_resource type="Resource" id="Resource_x2kcs"]
 script = ExtResource("3_4y1r4")
-health = 1000
-speed = 1000.0
-damage = 50
-knockback = 1000.0
-texture = SubResource("SpriteFrames_6bry8")
+health = 20
+speed = 5.0
+damage = 10
+knockback = 100.0
+texture = SubResource("SpriteFrames_x2kcs")
 metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 
 [node name="Node2D" type="Node2D" unique_id=1616731312]
@@ -806,11 +806,6 @@ scale = Vector2(5, 5)
 tile_map_data = PackedByteArray(0, 0, 31, 0, 25, 0, 1, 0, 8, 0, 15, 0, 0, 0)
 tile_set = SubResource("TileSet_qtktj")
 
-[node name="Placeholder Enemy" parent="." unique_id=1486502611 instance=ExtResource("3_tkmsp")]
-y_sort_enabled = true
-position = Vector2(-807, -81)
-attributes = SubResource("Resource_6bry8")
-
 [node name="Player" parent="." unique_id=1014740986 instance=ExtResource("4_4y1r4")]
 z_index = 1
 y_sort_enabled = true
@@ -819,3 +814,6 @@ position = Vector2(477, 342)
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=91555481]
 position = Vector2(1, 4)
 zoom = Vector2(0.8, 0.8)
+
+[node name="Placeholder Enemy" parent="." unique_id=1486502611 instance=ExtResource("3_6bry8")]
+attributes = SubResource("Resource_x2kcs")

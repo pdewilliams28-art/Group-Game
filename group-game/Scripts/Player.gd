@@ -13,7 +13,7 @@ var direction: int = 0
 var attacking = false
 var stagger = false
 var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
-@onready var audio_player = $AudioStreamPlayer
+@onready var audio_player = %"Sound_effects"
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false and attacking == false:
