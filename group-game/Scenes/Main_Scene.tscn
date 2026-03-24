@@ -790,7 +790,7 @@ script = ExtResource("3_4y1r4")
 health = 100
 speed = 150.0
 damage = 25
-knockback = 25.0
+knockback = 50.0
 texture = SubResource("SpriteFrames_x2kcs")
 metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 
