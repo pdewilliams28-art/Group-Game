@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ba65hsxq7xtgh" path="res://Sprites/Tileset.png" id="1_7fr83"]
 [ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_4y1r4"]
-[ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_tkmsp"]
+[ext_resource type="PackedScene" uid="uid://btjtxv2eyqdpp" path="res://Scenes/Red_Green_Magic_Fire.tscn" id="3_tkmsp"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
 [ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="4_6bry8"]
 
