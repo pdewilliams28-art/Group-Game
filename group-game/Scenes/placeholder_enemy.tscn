@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bairfw7c4iisx" path="res://Sprites/Health Bar Over.png" id="4_1g4ed"]
 [ext_resource type="Texture2D" uid="uid://bktytlqt00dkw" path="res://Sprites/Slime.png" id="5_jt8dh"]
 [ext_resource type="Texture2D" uid="uid://k22aogu6uhg1" path="res://Sprites/Health Bar Progress.png" id="5_rgx65"]
+[ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="6_1g4ed"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ayjk"]
 radius = 6.0
@@ -53,6 +54,41 @@ animations = [{
 "duration": 0.25,
 "texture": SubResource("AtlasTexture_1g4ed")
 }, {
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgx65"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cph4x"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0ntd"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxx34"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqglh"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx2m3"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqv1k"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkms4"]
+atlas = ExtResource("6_1g4ed")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgdwk"]
+animations = [{
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rgx65")
 }, {
@@ -73,10 +109,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mqv1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkms4")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 7.5
 }]
 
 [node name="Placeholder Enemy" type="CharacterBody2D" unique_id=1486502611 groups=["Enemy"]]
