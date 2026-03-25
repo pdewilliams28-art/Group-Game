@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bosn5qxc0uyw2" path="res://Scenes/Pause_button.gd" id="3_x2kcs"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
 [ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="4_6bry8"]
+[ext_resource type="Script" uid="uid://dihiis82th61x" path="res://pause_menu.gd" id="5_7h23t"]
+[ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://pause_menu.tscn" id="7_1l8qe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
 texture = ExtResource("1_7fr83")
@@ -825,7 +827,12 @@ offset_bottom = -350.0
 text = "Pause"
 script = ExtResource("3_x2kcs")
 
+[node name="Pause Menu" parent="Player" unique_id=1301557043 instance=ExtResource("7_1l8qe")]
+script = ExtResource("5_7h23t")
+
 [node name="Placeholder Enemy" parent="." unique_id=1486502611 instance=ExtResource("3_6bry8")]
 attributes = SubResource("Resource_x2kcs")
 
+[connection signal="pause_game" from="Player/Button" to="Player/Pause Menu" method="_on_button_pause_game"]
 [connection signal="pressed" from="Player/Button" to="Player/Button" method="_on_pressed"]
+[connection signal="unpause_game" from="Player/Button" to="Player/Pause Menu" method="_on_button_unpause_game"]
