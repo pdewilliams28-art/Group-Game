@@ -8,4 +8,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("ui_cancel"):
+		pause()
+func pause():
+	if get_tree().paused == false:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
+
+
+func _on_pressed() -> void:
+	pause()

@@ -208,3 +208,7 @@ func playsound_and_wait(sound):
 	var audio_length = audio_player.stream.get_length()
 	audio_player.play()
 	await get_tree().create_timer(audio_length +0.1).timeout
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.
