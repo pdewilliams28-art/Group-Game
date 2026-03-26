@@ -816,6 +816,7 @@ position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_dewec")
 
 [node name="Attack_Timer" type="Timer" parent="." unique_id=861477607]
+wait_time = 0.2
 
 [node name="Sound_effects" type="AudioStreamPlayer" parent="." unique_id=1967099728]
 unique_name_in_owner = true

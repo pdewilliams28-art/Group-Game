@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://cgihykud333ql"]
 
 [ext_resource type="Texture2D" uid="uid://ba65hsxq7xtgh" path="res://Sprites/Tileset.png" id="1_7fr83"]
+[ext_resource type="Script" uid="uid://rq05uo5ybs3h" path="res://Scenes/main_scene.gd" id="1_7h23t"]
 [ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_4y1r4"]
 [ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_6bry8"]
-[ext_resource type="Script" uid="uid://bosn5qxc0uyw2" path="res://Scenes/Pause_button.gd" id="3_x2kcs"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
 [ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="4_6bry8"]
-[ext_resource type="Script" uid="uid://dihiis82th61x" path="res://pause_menu.gd" id="5_7h23t"]
 [ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://pause_menu.tscn" id="7_1l8qe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
@@ -797,10 +796,15 @@ knockback = 50.0
 texture = SubResource("SpriteFrames_x2kcs")
 metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 
-[node name="Node2D" type="Node2D" unique_id=1616731312]
+[node name="Main Scene" type="Node2D" unique_id=1616731312]
+process_mode = 3
 y_sort_enabled = true
+script = ExtResource("1_7h23t")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=504227716]
+[node name="objects that pause" type="Node2D" parent="." unique_id=2075857876]
+process_mode = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="objects that pause" unique_id=504227716]
 z_index = 1
 y_sort_enabled = true
 texture_filter = 1
@@ -809,30 +813,20 @@ scale = Vector2(5, 5)
 tile_map_data = PackedByteArray(0, 0, 31, 0, 25, 0, 1, 0, 8, 0, 15, 0, 0, 0)
 tile_set = SubResource("TileSet_qtktj")
 
-[node name="Player" parent="." unique_id=1014740986 instance=ExtResource("4_4y1r4")]
+[node name="Player" parent="objects that pause" unique_id=1014740986 instance=ExtResource("4_4y1r4")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(477, 342)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=91555481]
+[node name="Camera2D" type="Camera2D" parent="objects that pause/Player" unique_id=91555481]
 position = Vector2(1, 4)
 zoom = Vector2(0.8, 0.8)
 
-[node name="Button" type="Button" parent="Player" unique_id=612396149]
-process_mode = 3
-offset_left = 624.0
-offset_top = -397.0
-offset_right = 720.0
-offset_bottom = -350.0
-text = "Pause"
-script = ExtResource("3_x2kcs")
+[node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("7_1l8qe")]
+unique_name_in_owner = true
+metadata/_edit_use_anchors_ = true
 
-[node name="Pause Menu" parent="Player" unique_id=1301557043 instance=ExtResource("7_1l8qe")]
-script = ExtResource("5_7h23t")
-
-[node name="Placeholder Enemy" parent="." unique_id=1486502611 instance=ExtResource("3_6bry8")]
+[node name="Placeholder Enemy" parent="objects that pause" unique_id=1486502611 instance=ExtResource("3_6bry8")]
 attributes = SubResource("Resource_x2kcs")
 
-[connection signal="pause_game" from="Player/Button" to="Player/Pause Menu" method="_on_button_pause_game"]
-[connection signal="pressed" from="Player/Button" to="Player/Button" method="_on_pressed"]
-[connection signal="unpause_game" from="Player/Button" to="Player/Pause Menu" method="_on_button_unpause_game"]
+[connection signal="resume_button_pressed" from="objects that pause/Player/Pause Menu" to="." method="_on_pause_menu_resume_button_pressed"]
