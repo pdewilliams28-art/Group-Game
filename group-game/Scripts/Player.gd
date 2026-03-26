@@ -14,7 +14,9 @@ var attacking = false
 var stagger = false
 @export var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
-
+func _ready() -> void:
+	attacking = false
+	$Sword_Attack/Hitbox.disabled = true
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false and attacking == false:
 		Dodge()
