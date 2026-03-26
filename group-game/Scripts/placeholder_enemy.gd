@@ -41,8 +41,9 @@ func _on_detection_range_body_exited(body: Node2D) -> void:
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.name == "Sword_Attack":
-		health -= 1
+	print("ifdahfoefo")
+	if body is Player:
+		health -= 100
 		print(health)
 func _process(delta: float) -> void:
 	update_health_bar(health, max_health)
@@ -50,8 +51,6 @@ func _process(delta: float) -> void:
 		health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = health - max_health/10
-	if Input.is_action_just_pressed("Dodge"):
-		health -= 10
 func update_health_bar(current_hp, max_hp):
 	var health_pct = float(current_hp) / max_hp
 	health_bar.value = current_hp

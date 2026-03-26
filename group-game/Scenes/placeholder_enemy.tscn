@@ -13,7 +13,7 @@ radius = 6.0
 radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7bim"]
-radius = 31.0
+radius = 38.013157
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jt8dh"]
 atlas = ExtResource("5_jt8dh")
@@ -100,7 +100,7 @@ shape = SubResource("CircleShape2D_nqvvf")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=267355972]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 4
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox" unique_id=1667615444]
 shape = SubResource("CircleShape2D_l7bim")

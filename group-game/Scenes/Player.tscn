@@ -788,8 +788,8 @@ libraries/ = SubResource("AnimationLibrary_5ixxa")
 
 [node name="Sword_Attack" type="Area2D" parent="." unique_id=132728866]
 position = Vector2(0, 16)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 0
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
 position = Vector2(1, -68.125)
