@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bh1aktqa3lyj0"]
+
+[ext_resource type="Texture2D" uid="uid://c24uytuhlgtvt" path="res://MenuScreen.png" id="1_tuusc"]
+[ext_resource type="Script" uid="uid://c3tj4hjetnuab" path="res://menu_screen.gd" id="1_ylmtb"]
+[ext_resource type="Texture2D" uid="uid://7knenmuypq0k" path="res://SelectionBox.png" id="2_iefc8"]
+
+[node name="MenuScreen" type="Control" unique_id=1883293759]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ylmtb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1403405295]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_tuusc")
+
+[node name="PlayButton" type="Button" parent="." unique_id=127396287]
+z_index = 1
+layout_mode = 0
+offset_left = 512.0
+offset_top = 416.0
+offset_right = 640.0
+offset_bottom = 488.0
+text = "PLAY"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="." unique_id=1715970731]
+z_index = 1
+layout_mode = 0
+offset_left = 320.0
+offset_top = 288.0
+offset_right = 448.0
+offset_bottom = 352.0
+text = "OPTIONS"
+flat = true
+
+[node name="QuitButton" type="Button" parent="." unique_id=801761112]
+z_index = 1
+layout_mode = 0
+offset_left = 704.0
+offset_top = 288.0
+offset_right = 832.0
+offset_bottom = 352.0
+text = "QUIT
+"
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=622684909]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 320.0
+offset_right = 704.0
+offset_bottom = 576.0
+texture = ExtResource("2_iefc8")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=431857606]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 192.0
+offset_right = 896.0
+offset_bottom = 448.0
+texture = ExtResource("2_iefc8")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1494646801]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 512.0
+offset_bottom = 448.0
+texture = ExtResource("2_iefc8")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
