@@ -18,6 +18,7 @@ config/icon="res://Sprites/icon.svg"
 [autoload]
 
 attributes="*uid://d3vbhsf1uu6bd"
+Player_Manager="*uid://c32gx8s74xcyq"
 
 [global_group]
 
