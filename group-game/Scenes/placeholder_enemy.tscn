@@ -99,7 +99,7 @@ scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_nqvvf")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=267355972]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 4
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox" unique_id=1667615444]
@@ -123,4 +123,4 @@ frame_progress = 0.51351064
 
 [connection signal="body_entered" from="Detection Range" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="Detection Range" to="." method="_on_detection_range_body_exited"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

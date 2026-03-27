@@ -759,7 +759,6 @@ radius = 52.153618
 radius = 28.01785
 
 [node name="Player" type="CharacterBody2D" unique_id=545131653]
-collision_mask = 129
 script = ExtResource("1_rpqav")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
@@ -789,7 +788,7 @@ libraries/ = SubResource("AnimationLibrary_5ixxa")
 [node name="Sword_Attack" type="Area2D" parent="." unique_id=132728866]
 position = Vector2(0, 16)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
 position = Vector2(1, -68.125)
@@ -805,8 +804,7 @@ unique_name_in_owner = true
 shape = SubResource("CapsuleShape2D_gntrk")
 
 [node name="Detection_Range" type="Area2D" parent="." unique_id=2071541933]
-collision_layer = 4
-collision_mask = 4
+collision_mask = 2
 
 [node name="Detection box" type="CollisionShape2D" parent="Detection_Range" unique_id=399850425]
 shape = SubResource("CircleShape2D_gntrk")

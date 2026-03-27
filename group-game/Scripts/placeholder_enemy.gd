@@ -40,11 +40,6 @@ func _on_detection_range_body_exited(body: Node2D) -> void:
 		target = null
 
 
-func _on_hurtbox_body_entered(body: Node2D) -> void:
-	print("ifdahfoefo")
-	if body is Player:
-		health -= 100
-		print(health)
 func _process(delta: float) -> void:
 	update_health_bar(health, max_health)
 	if health > max_health:
@@ -58,3 +53,11 @@ func update_health_bar(current_hp, max_hp):
 	# lerp(Color_at_0, Color_at_1, weight)
 	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
 	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct-.3)
+	
+
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.name == "Sword_Attack":
+		health -= 10
+		print("ow")
