@@ -19,7 +19,7 @@ func _ready() -> void:
 	knockback = attributes.knockback
 	sprite.sprite_frames = attributes.texture
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if target:
 		chase_target()
 	else:
@@ -50,12 +50,12 @@ func _on_detection_range_body_exited(body: Node2D) -> void:
 		target = null
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_health_bar(health, max_health)
 	if health > max_health:
 		health = max_health
 	health_bar.max_value = max_health
-	health_bar.value = health - max_health/10
+	health_bar.value = health - float(max_health)/10
 func update_health_bar(current_hp, max_hp):
 	var health_pct = float(current_hp) / max_hp
 	health_bar.value = current_hp
@@ -70,5 +70,5 @@ func update_health_bar(current_hp, max_hp):
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	health -= 10
 	print("ow")
-	knockback_taken =25
+	knockback_taken =10
 	player_position = area.global_position
