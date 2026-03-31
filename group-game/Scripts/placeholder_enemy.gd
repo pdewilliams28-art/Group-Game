@@ -24,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 		chase_target()
 	else:
 		if not velocity == Vector2.ZERO:
-			velocity = velocity * 0.9
+			velocity = velocity * 0.1
 			if velocity.x < 0.1 and velocity.y < 0.1:
 				velocity = Vector2.ZERO
 		$AnimatedSprite2D.stop()
@@ -70,5 +70,5 @@ func update_health_bar(current_hp, max_hp):
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	health -= 10
 	print("ow")
-	knockback_taken =10
+	knockback_taken =4
 	player_position = area.global_position
