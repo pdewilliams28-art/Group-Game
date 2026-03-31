@@ -1,8 +1,9 @@
 
 extends CharacterBody2D
 class_name Player
-var health: int = 200
-var SPEED: float = 350.0
+@export var health: int = 200
+var max_health: int = health
+@export var SPEED: float = 350.0
 const JUMP_VELOCITY = -400.0
 const accel = 100
 var dodge: bool = false
@@ -15,6 +16,7 @@ var attacking = false
 var stagger = false
 @export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
+@onready var health_bar: TextureProgressBar = %"Health Bar"
 func _ready() -> void:
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
@@ -125,6 +127,7 @@ func _process(_delta: float) -> void:
 			if Invincible == false:
 				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
 					health -= body.damage
+					print(health)
 					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
 					print(velocity)
 					Invincible = true
@@ -133,6 +136,7 @@ func _process(_delta: float) -> void:
 					playsound_and_wait(example_sound)
 				else:
 					health -= body.damage
+					print(health)
 					#add velocity in random direction
 					var randv = randf_range(-PI,PI)
 					velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
@@ -142,6 +146,17 @@ func _process(_delta: float) -> void:
 					playsound_and_wait(example_sound)
 	if health <= 0:
 		get_tree().call_deferred("reload_current_scene")
+	update_health_bar(health, max_health)
+	if health > max_health:
+		health = max_health
+	health_bar.max_value = 100
+	health_bar.value = float(health) / max_health * 100
+func update_health_bar(current_hp, max_hp):
+	var health_pct = float(current_hp) / max_hp
+	# lerp(Color_at_0, Color_at_1, weight)
+	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
+	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct-.3)
+	
 func Dodge():
 	dodge = true
 	dodge_cooldown = true

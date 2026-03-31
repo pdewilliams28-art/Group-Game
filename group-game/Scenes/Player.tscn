@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://1tl6csya2jn7" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://uidlqq6l7s38" path="res://Sprites/Player.webp" id="2_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://drshh4n85u758" path="res://Sprites/Health Bar Under Player.png" id="3_5ixxa"]
+[ext_resource type="Texture2D" uid="uid://cr5u4t830cdgk" path="res://Sprites/Health Bar Over Player.png" id="4_nn08x"]
+[ext_resource type="Texture2D" uid="uid://cynuh6c4us05l" path="res://Sprites/Health Bar Progress Player.png" id="5_5ixxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("2_kyqiw")
@@ -818,6 +821,21 @@ wait_time = 0.2
 
 [node name="Sound_effects" type="AudioStreamPlayer" parent="." unique_id=1967099728]
 unique_name_in_owner = true
+
+[node name="Camera" type="Camera2D" parent="." unique_id=963678607]
+
+[node name="Health Bar" type="TextureProgressBar" parent="." unique_id=1350255692]
+unique_name_in_owner = true
+offset_left = -591.0
+offset_top = 86.0
+offset_right = -527.0
+offset_bottom = 150.0
+scale = Vector2(5.36, 5.36)
+min_value = -28.0
+value = 1.0
+texture_under = ExtResource("3_5ixxa")
+texture_over = ExtResource("4_nn08x")
+texture_progress = ExtResource("5_5ixxa")
 
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]

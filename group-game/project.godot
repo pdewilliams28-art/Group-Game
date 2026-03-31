@@ -75,6 +75,7 @@ Attack={
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Player Weapon"
 2d_physics/layer_4="Tilemap"
+2d_physics/layer_5="Consumables"
 
 [physics]
 
