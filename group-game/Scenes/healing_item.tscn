@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cib2sbvoidtr"]
+
+[ext_resource type="SpriteFrames" uid="uid://dk6fl1510aqek" path="res://Sprites/Heart_sprite_frames.tres" id="1_cunu3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvl4t"]
+radius = 12.582336
+
+[node name="Healing item" type="Area2D" unique_id=1658949148]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1912087843]
+sprite_frames = ExtResource("1_cunu3")
+frame_progress = 0.17928621
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=470302796]
+position = Vector2(0, 7)
+scale = Vector2(0.8957378, 0.3649664)
+shape = SubResource("CircleShape2D_jvl4t")
+
+[node name="Timer" type="Timer" parent="." unique_id=888363404]
+wait_time = 10.0

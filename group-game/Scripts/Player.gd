@@ -13,7 +13,7 @@ var interactable = NAN
 var direction: int = 0
 var attacking = false
 var stagger = false
-@export var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
+@export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
 func _ready() -> void:
 	attacking = false
