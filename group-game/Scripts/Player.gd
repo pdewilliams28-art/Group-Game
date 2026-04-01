@@ -16,6 +16,7 @@ var interactable = NAN
 var direction: int = 0
 var attacking = false
 var stagger = false
+@export var sword_swish_sfx: AudioStream = preload("res://Sounds/Knife Swish.mp3.mp3")
 @export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
 @onready var health_bar: TextureProgressBar = %"Health Bar"
@@ -109,6 +110,7 @@ func Attack():
 	print(attacking)
 	$Sword_Attack/Hitbox.disabled = false
 	velocity = Vector2(0, 0)
+	playsound_with_pitch_variation(sword_swish_sfx,0.2)
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
 		$AnimationPlayer.play("Sword_Up")
 		$AnimatedSprite2D.play("Attack_Up")
@@ -251,3 +253,12 @@ func playsound_and_wait(sound):
 	var audio_length = audio_player.stream.get_length()
 	audio_player.play()
 	await get_tree().create_timer(audio_length +0.1).timeout
+
+func playsound(sound):
+	audio_player.stream = sound
+	audio_player.play()
+
+func playsound_with_pitch_variation(sound,pitch_variation):
+	audio_player.stream = sound
+	audio_player.pitch_scale = randf_range(1-pitch_variation, 1+pitch_variation)
+	audio_player.play()
