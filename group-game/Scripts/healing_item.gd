@@ -26,3 +26,4 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		body.playsound_and_wait(consumed_sfx)
 		body.health += health_amount
+		

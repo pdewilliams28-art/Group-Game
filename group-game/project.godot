@@ -20,6 +20,10 @@ config/icon="res://Sprites/icon.svg"
 attributes="*uid://d3vbhsf1uu6bd"
 Player_Manager="*uid://c32gx8s74xcyq"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 Interactable="Interactables: notes, chests, maps, etc."
