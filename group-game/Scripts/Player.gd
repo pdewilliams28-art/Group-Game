@@ -17,6 +17,7 @@ var direction: int = 0
 var attacking = false
 var stagger = false
 @export var sword_swish_sfx: AudioStream = preload("res://Sounds/Knife Swish.mp3.mp3")
+@export var sword_hit_flesh_sfx: AudioStream = preload("res://Sounds/Sword Hit Flesh.mp3.mp3")
 @export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
 @onready var health_bar: TextureProgressBar = %"Health Bar"
@@ -123,6 +124,8 @@ func Attack():
 	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
 		$AnimationPlayer.play("Sword_Right")
 		$AnimatedSprite2D.play("Attack_Right")
+	
+	
 
 func _process(_delta: float) -> void:
 	var bodies = $Hurtbox.get_overlapping_bodies()
