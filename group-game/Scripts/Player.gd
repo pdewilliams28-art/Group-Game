@@ -3,6 +3,8 @@ extends CharacterBody2D
 class_name Player
 @export var health: int = 200
 var max_health: int = health
+@export var mana: int = 200
+var max_mana: int = mana
 @export var SPEED: float = 350.0
 const JUMP_VELOCITY = -400.0
 const accel = 100
@@ -17,6 +19,7 @@ var stagger = false
 @export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
 @onready var health_bar: TextureProgressBar = %"Health Bar"
+@onready var mana_bar: TextureProgressBar = %"Mana Bar"
 func _ready() -> void:
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
@@ -151,12 +154,28 @@ func _process(_delta: float) -> void:
 		health = max_health
 	health_bar.max_value = 100
 	health_bar.value = float(health) / max_health * 100
+	mana_bar.max_value = 100
+	mana_bar.value = float(mana) / max_mana * 100
+	update_mana_bar(mana,max_mana)
+
+
+
 func update_health_bar(current_hp, max_hp):
 	var health_pct = float(current_hp) / max_hp
 	# lerp(Color_at_0, Color_at_1, weight)
 	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
 	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct-.3)
-	
+
+
+
+func update_mana_bar(current_m, max_m):
+	var mana_pct = float(current_m) / max_m
+	# lerp(Color_at_0, Color_at_1, weight)
+	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
+	mana_bar.tint_progress = Color.WHITE.lerp(Color.BLUE, mana_pct)
+
+
+
 func Dodge():
 	dodge = true
 	dodge_cooldown = true
@@ -175,6 +194,8 @@ func Dodge():
 	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
 		velocity = Vector2(1000, 0)
 		$AnimatedSprite2D.play("Roll_Right")
+
+
 
 func _on_dodge_timer_timeout() -> void:
 	dodge = false
@@ -210,6 +231,7 @@ func _on_invincibility_timer_timeout() -> void:
 	stagger = false
 
 
+
 func _on_attack_timer_timeout() -> void:
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
@@ -221,12 +243,11 @@ func _on_attack_timer_timeout() -> void:
 		$AnimatedSprite2D.play("Left_Idle")
 	if $AnimatedSprite2D.animation == "Attack_Right":
 		$AnimatedSprite2D.play("Right_Idle")
+
+
+
 func playsound_and_wait(sound):
 	audio_player.stream = sound
 	var audio_length = audio_player.stream.get_length()
 	audio_player.play()
 	await get_tree().create_timer(audio_length +0.1).timeout
-
-
-func _on_button_pressed() -> void:
-	pass # Replace with function body.
