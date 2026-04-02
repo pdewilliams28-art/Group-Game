@@ -1,7 +1,11 @@
+
 extends CharacterBody2D
 class_name Player
-var health: int = 200
-var SPEED: float = 350.0
+@export var health: int = 200
+var max_health: int = health
+@export var mana: int = 200
+var max_mana: int = mana
+@export var SPEED: float = 350.0
 const JUMP_VELOCITY = -400.0
 const accel = 100
 var dodge: bool = false
@@ -12,9 +16,15 @@ var interactable = NAN
 var direction: int = 0
 var attacking = false
 var stagger = false
-var example_sound = preload("res://Sounds/alex_jauk-slap-237622.mp3")
+@export var sword_swish_sfx: AudioStream = preload("res://Sounds/Knife Swish.mp3.mp3")
+@export var sword_hit_flesh_sfx: AudioStream = preload("res://Sounds/Sword Hit Flesh.mp3.mp3")
+@export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
-
+@onready var health_bar: TextureProgressBar = %"Health Bar"
+@onready var mana_bar: TextureProgressBar = %"Mana Bar"
+func _ready() -> void:
+	attacking = false
+	$Sword_Attack/Hitbox.disabled = true
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false and attacking == false:
 		Dodge()
@@ -101,6 +111,7 @@ func Attack():
 	print(attacking)
 	$Sword_Attack/Hitbox.disabled = false
 	velocity = Vector2(0, 0)
+	playsound_with_pitch_variation(sword_swish_sfx,0.2)
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
 		$AnimationPlayer.play("Sword_Up")
 		$AnimatedSprite2D.play("Attack_Up")
@@ -130,6 +141,7 @@ func _process(_delta: float) -> void:
 			if Invincible == false:
 				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
 					health -= body.damage
+					print(health)
 					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
 					print(velocity)
 					Invincible = true
@@ -138,6 +150,7 @@ func _process(_delta: float) -> void:
 					playsound_and_wait(example_sound)
 				else:
 					health -= body.damage
+					print(health)
 					#add velocity in random direction
 					var randv = randf_range(-PI,PI)
 					velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
@@ -147,6 +160,33 @@ func _process(_delta: float) -> void:
 					playsound_and_wait(example_sound)
 	if health <= 0:
 		get_tree().call_deferred("reload_current_scene")
+	update_health_bar(health, max_health)
+	if health > max_health:
+		health = max_health
+	health_bar.max_value = 100
+	health_bar.value = float(health) / max_health * 100
+	mana_bar.max_value = 100
+	mana_bar.value = float(mana) / max_mana * 100
+	update_mana_bar(mana,max_mana)
+
+
+
+func update_health_bar(current_hp, max_hp):
+	var health_pct = float(current_hp) / max_hp
+	# lerp(Color_at_0, Color_at_1, weight)
+	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
+	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct-.3)
+
+
+
+func update_mana_bar(current_m, max_m):
+	var mana_pct = float(current_m) / max_m
+	# lerp(Color_at_0, Color_at_1, weight)
+	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
+	mana_bar.tint_progress = Color.WHITE.lerp(Color.BLUE, mana_pct)
+
+
+
 func Dodge():
 	dodge = true
 	dodge_cooldown = true
@@ -165,6 +205,8 @@ func Dodge():
 	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
 		velocity = Vector2(1000, 0)
 		$AnimatedSprite2D.play("Roll_Right")
+
+
 
 func _on_dodge_timer_timeout() -> void:
 	dodge = false
@@ -200,6 +242,7 @@ func _on_invincibility_timer_timeout() -> void:
 	stagger = false
 
 
+
 func _on_attack_timer_timeout() -> void:
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
@@ -212,12 +255,20 @@ func _on_attack_timer_timeout() -> void:
 		$AnimatedSprite2D.play("Left_Idle")
 	if $AnimatedSprite2D.animation == "Attack_Right":
 		$AnimatedSprite2D.play("Right_Idle")
+
+
+
 func playsound_and_wait(sound):
 	audio_player.stream = sound
 	var audio_length = audio_player.stream.get_length()
 	audio_player.play()
 	await get_tree().create_timer(audio_length +0.1).timeout
 
+func playsound(sound):
+	audio_player.stream = sound
+	audio_player.play()
 
-func _on_button_pressed() -> void:
-	pass # Replace with function body.
+func playsound_with_pitch_variation(sound,pitch_variation):
+	audio_player.stream = sound
+	audio_player.pitch_scale = randf_range(1-pitch_variation, 1+pitch_variation)
+	audio_player.play()

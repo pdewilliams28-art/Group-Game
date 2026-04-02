@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cp3gpekdfc4u1"]
+
+[ext_resource type="Texture2D" uid="uid://bekp7a5yndxx7" path="res://TitleScreen.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://5yup77182aoo" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://7knenmuypq0k" path="res://SelectionBox.png" id="2_7vrkn"]
+
+[node name="MainMenu" type="Control" unique_id=365495397]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1116251100]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_06t4h")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=877230210]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 440.0
+offset_right = 709.0
+offset_bottom = 696.0
+texture = ExtResource("2_7vrkn")
+
+[node name="Button" type="Button" parent="." unique_id=1884639310]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 519.0
+offset_right = 659.0
+offset_bottom = 616.0
+text = "START"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

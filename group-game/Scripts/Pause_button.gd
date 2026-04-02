@@ -9,14 +9,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		pause()
-func pause():
+		pause_toggle()
+func pause_toggle():
 	if get_tree().paused == false:
 		get_tree().paused = true
 		emit_signal("pause_game")
+		visible = false
 	else:
 		get_tree().paused = false
 		emit_signal("unpause_game")
+		visible = true
 
 func _on_pressed() -> void:
-	pause()
+	pause_toggle()
+
+
+
+func _on_pause_menu_unpause_game() -> void:
+	pause_toggle()
