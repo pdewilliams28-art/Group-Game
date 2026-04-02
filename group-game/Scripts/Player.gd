@@ -1,6 +1,7 @@
 
 extends CharacterBody2D
 class_name Player
+signal attack
 @export var health: int = 200
 var max_health: int = health
 @export var mana: int = 200
@@ -108,10 +109,10 @@ func _physics_process(_delta: float) -> void:
 func Attack():
 	attacking = true
 	$Attack_Timer.start()
-	print(attacking)
+	#print(attacking)
 	$Sword_Attack/Hitbox.disabled = false
 	velocity = Vector2(0, 0)
-	playsound_with_pitch_variation(sword_swish_sfx,0.2)
+	emit_signal("attack")
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
 		$AnimationPlayer.play("Sword_Up")
 		$AnimatedSprite2D.play("Attack_Up")
@@ -252,16 +253,19 @@ func _on_attack_timer_timeout() -> void:
 
 
 func playsound_and_wait(sound):
-	audio_player.stream = sound
+	var sfx: AudioStream = sound
+	audio_player.stream = sfx
 	var audio_length = audio_player.stream.get_length()
 	audio_player.play()
 	await get_tree().create_timer(audio_length +0.1).timeout
 
 func playsound(sound):
-	audio_player.stream = sound
+	var sfx: AudioStream = sound
+	audio_player.stream = sfx
 	audio_player.play()
 
 func playsound_with_pitch_variation(sound,pitch_variation):
-	audio_player.stream = sound
+	var sfx: AudioStream = sound
+	audio_player.stream = sfx
 	audio_player.pitch_scale = randf_range(1-pitch_variation, 1+pitch_variation)
 	audio_player.play()

@@ -68,7 +68,9 @@ func update_health_bar(current_hp, max_hp):
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	health -= 10
-	print("ow")
-	knockback_taken =4
+	health -= area.damage
+	#print("ow")
+	knockback_taken = area.knockback
 	player_position = area.global_position
+	if health <= 0:
+		area.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))

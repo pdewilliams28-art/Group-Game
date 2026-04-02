@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://rq05uo5ybs3h" path="res://Scripts/main_scene.gd" id="1_7h23t"]
 [ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="3_4y1r4"]
 [ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_6bry8"]
+[ext_resource type="AudioStream" uid="uid://cc4uwmpk2xqbe" path="res://Sounds/johnnybacon156-fah-469417.mp3" id="4_0k7nw"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
 [ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="4_6bry8"]
 [ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="7_1l8qe"]
@@ -753,6 +754,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(477, 342)
 collision_mask = 137
+sword_hit_flesh_sfx = ExtResource("4_0k7nw")
 
 [node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("7_1l8qe")]
 unique_name_in_owner = true
@@ -766,4 +768,5 @@ attributes = SubResource("Resource_x2kcs")
 position = Vector2(660, 463)
 Attributes = SubResource("Resource_2nv37")
 
+[connection signal="attack" from="objects that pause/Player" to="." method="_on_player_attack"]
 [connection signal="resume_button_pressed" from="objects that pause/Player/Pause Menu" to="." method="_on_pause_menu_resume_button_pressed"]

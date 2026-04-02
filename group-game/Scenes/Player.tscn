@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://1tl6csya2jn7" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://uidlqq6l7s38" path="res://Sprites/Player.webp" id="2_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://drshh4n85u758" path="res://Sprites/Health Bar Under Player.png" id="3_5ixxa"]
+[ext_resource type="Script" uid="uid://cywuut585clli" path="res://Scenes/sword_attack.gd" id="3_bhhdu"]
 [ext_resource type="Texture2D" uid="uid://cr5u4t830cdgk" path="res://Sprites/Health Bar Over Player.png" id="4_nn08x"]
 [ext_resource type="Texture2D" uid="uid://cynuh6c4us05l" path="res://Sprites/Health Bar Progress Player.png" id="5_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://qgw3utbt3bvk" path="res://Sprites/Mana Bar Under Player.png.png" id="6_bhhdu"]
@@ -794,6 +795,7 @@ libraries/ = SubResource("AnimationLibrary_5ixxa")
 position = Vector2(0, 16)
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("3_bhhdu")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
 position = Vector2(1, -68.125)
@@ -852,10 +854,12 @@ texture_under = ExtResource("6_bhhdu")
 texture_over = ExtResource("7_megsn")
 texture_progress = ExtResource("5_5ixxa")
 
+[connection signal="attack" from="." to="Sword_Attack" method="_on_player_attack"]
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="timeout" from="Invincibility_Timer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="body_entered" from="Interaction_Range" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="Interaction_Range" to="." method="_on_interaction_range_body_exited"]
+[connection signal="body_entered" from="Sword_Attack" to="Sword_Attack" method="_on_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
