@@ -2,6 +2,7 @@ extends CharacterBody2D
 @export var attributes: Enemy_resource
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $"Health Bar"
+var Heart_SCENE: PackedScene = preload("res://Scenes/healing_item.tscn")
 var speed: float
 var target: Node2D
 var damage: int
@@ -66,7 +67,7 @@ func update_health_bar(current_hp, max_hp):
 	
 
 
-
+#Right here Mr Sullivan ⬇️
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	health -= area.damage
 	#print("ow")
@@ -74,5 +75,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	player_position = area.global_position
 	area.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
 	if health <= 0:
+		var spawn_resource: Resource = consumable_resource
+		var new_instance = Heart_SCENE.instantiate()
+		new_instance.heart = consumable_resource #this part is where im having trouble
+		get_tree().current_scene.add_child(new_instance)
 		area.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))
 		queue_free()
+		
