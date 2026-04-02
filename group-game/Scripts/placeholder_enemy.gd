@@ -72,5 +72,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	#print("ow")
 	knockback_taken = area.knockback
 	player_position = area.global_position
+	area.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
 	if health <= 0:
 		area.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))
+		queue_free()
