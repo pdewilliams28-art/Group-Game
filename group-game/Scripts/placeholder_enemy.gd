@@ -75,10 +75,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	player_position = area.global_position
 	area.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
 	if health <= 0:
-		var spawn_resource: Resource = consumable_resource
+		var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")
 		var new_instance = Heart_SCENE.instantiate()
-		new_instance.heart = consumable_resource #this part is where im having trouble
-		get_tree().current_scene.add_child(new_instance)
+		new_instance.Attributes = spawn_resource #this part is where im having trouble
+		new_instance.global_position = global_position
+		get_parent().add_child(new_instance)
 		area.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))
 		queue_free()
 		
