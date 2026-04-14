@@ -10,6 +10,7 @@ var health: int
 var max_health: int
 var knockback: float
 var knockback_taken: float
+var knockback_resistance: float
 var player_position: Vector2
 var accel: float = 10
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 	health = attributes.health
 	max_health = health
 	knockback = attributes.knockback
+	knockback_resistance = attributes.knockback_resistance
 	sprite.sprite_frames = attributes.texture
 
 func _physics_process(_delta: float) -> void:
@@ -67,19 +69,21 @@ func update_health_bar(current_hp, max_hp):
 	
 
 
-#Right here Mr Sullivan ⬇️
+
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	health -= area.damage
-	#print("ow")
-	knockback_taken = area.knockback
-	player_position = area.global_position
-	area.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
-	if health <= 0:
-		var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")
-		var new_instance = Heart_SCENE.instantiate()
-		new_instance.Attributes = spawn_resource #this part is where im having trouble
-		new_instance.global_position = global_position
-		get_parent().add_child(new_instance)
-		area.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))
-		queue_free()
-		
+	if area.is_in_group("Player") == true:
+		health -= area.damage
+		#print("ow")
+		knockback_taken = area.knockback
+		knockback_taken -= (knockback_taken*knockback_resistance)/100
+		player_position = area.global_position
+		area.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
+		if health <= 0:
+			var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")
+			var new_instance = Heart_SCENE.instantiate()
+			new_instance.Attributes = spawn_resource #this part is where im having trouble
+			new_instance.global_position = global_position
+			get_parent().add_child(new_instance)
+			area.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))
+			queue_free()
+			

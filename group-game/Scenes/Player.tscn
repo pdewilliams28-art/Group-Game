@@ -752,7 +752,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(102, 49.875)
+size = Vector2(36, 20.375)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntrk"]
 radius = 28.0
@@ -764,7 +764,7 @@ radius = 52.153618
 [sub_resource type="CircleShape2D" id="CircleShape2D_dewec"]
 radius = 28.01785
 
-[node name="Player" type="CharacterBody2D" unique_id=545131653]
+[node name="Player" type="CharacterBody2D" unique_id=545131653 groups=["Player"]]
 script = ExtResource("1_rpqav")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
@@ -791,7 +791,7 @@ shape = SubResource("CircleShape2D_kyqiw")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=761806485]
 libraries/ = SubResource("AnimationLibrary_5ixxa")
 
-[node name="Sword_Attack" type="Area2D" parent="." unique_id=132728866]
+[node name="Sword_Attack" type="Area2D" parent="." unique_id=132728866 groups=["Player"]]
 position = Vector2(0, 16)
 collision_layer = 4
 collision_mask = 4
@@ -799,7 +799,7 @@ script = ExtResource("3_bhhdu")
 damage = 20
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
-position = Vector2(1, -68.125)
+position = Vector2(1, -38.625)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_kyqiw")
 
