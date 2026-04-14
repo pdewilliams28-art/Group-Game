@@ -752,7 +752,7 @@ z_index = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Placeholder Enemy48" parent="objects that pause" unique_id=1084920511 instance=ExtResource("3_6bry8")]
-position = Vector2(386, 523)
+position = Vector2(-192, 357)
 attributes = SubResource("Resource_x2kcs")
 
 [node name="Healing item" parent="objects that pause" unique_id=1658949148 instance=ExtResource("8_7h23t")]
