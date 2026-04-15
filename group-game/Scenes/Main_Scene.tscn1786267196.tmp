@@ -727,8 +727,8 @@ metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 script = ExtResource("12_np8lt")
 direction = 3
 damage = 100
-knockback = 10
-target = "Enemy"
+knockback = 100
+target = "Player"
 speed = 5.0
 metadata/_custom_type_script = "uid://bbxoismbjm4dj"
 

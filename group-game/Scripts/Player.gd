@@ -134,25 +134,7 @@ func _process(_delta: float) -> void:
 		#print("hit!")
 		if body.is_in_group("Enemy"):
 			if Invincible == false:
-				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
-					health -= body.damage
-					print(health)
-					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
-					print(velocity)
-					Invincible = true
-					$Invincibility_Timer.start()
-					stagger = true
-					playsound_and_wait(example_sound)
-				else:
-					health -= body.damage
-					print(health)
-					#add velocity in random direction
-					var randv = randf_range(-PI,PI)
-					velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
-					print(velocity)
-					Invincible = true
-					$Invincibility_Timer.start()
-					playsound_and_wait(example_sound)
+				_damage(body)
 	if health <= 0:
 		get_tree().call_deferred("reload_current_scene")
 	update_health_bar(health, max_health)
@@ -269,3 +251,24 @@ func playsound_with_pitch_variation(sound,pitch_variation):
 	audio_player.stream = sfx
 	audio_player.pitch_scale = randf_range(1-pitch_variation, 1+pitch_variation)
 	audio_player.play()
+func _damage(body: Node2D):
+	if Invincible == false:
+		if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
+			health -= body.damage
+			print(health)
+			velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
+			print(velocity)
+			Invincible = true
+			$Invincibility_Timer.start()
+			stagger = true
+			playsound_and_wait(example_sound)
+		else:
+			health -= body.damage
+			print(health)
+			#add velocity in random direction
+			var randv = randf_range(-PI,PI)
+			velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
+			print(velocity)
+			Invincible = true
+			$Invincibility_Timer.start()
+			playsound_and_wait(example_sound)

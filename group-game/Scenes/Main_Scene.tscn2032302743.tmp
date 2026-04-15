@@ -727,8 +727,8 @@ metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 script = ExtResource("12_np8lt")
 direction = 3
 damage = 100
-knockback = 10
-target = "Enemy"
+knockback = 100
+target = "Player"
 speed = 5.0
 metadata/_custom_type_script = "uid://bbxoismbjm4dj"
 
@@ -755,7 +755,12 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(477, 342)
 collision_mask = 137
+health = null
+mana = null
+SPEED = null
+sword_swish_sfx = null
 sword_hit_flesh_sfx = ExtResource("4_0k7nw")
+example_sound = null
 
 [node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("7_1l8qe")]
 unique_name_in_owner = true
