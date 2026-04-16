@@ -11,6 +11,8 @@ collision_layer = 16
 script = ExtResource("1_t0ky7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1912087843]
+z_index = 1
+scale = Vector2(3, 3)
 sprite_frames = ExtResource("1_cunu3")
 frame_progress = 0.14400946
 
