@@ -104,6 +104,8 @@ func _physics_process(_delta: float) -> void:
 		direction = 0
 	if Input.is_action_just_pressed("Attack") and attacking == false and stagger == false and dodge == false:
 		Attack()
+	if Input.is_action_just_pressed("Shoot bow") and attacking == false and stagger == false and dodge == false:
+		Attack()
 	move_and_slide()
 	
 

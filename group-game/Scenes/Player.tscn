@@ -878,7 +878,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(39, 32.249275)
+size = Vector2(24, 17.749275)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4i3a"]
 atlas = ExtResource("3_gntrk")
@@ -1000,7 +1000,7 @@ script = ExtResource("3_bhhdu")
 damage = 20
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sword_Attack" unique_id=1879777012]
-position = Vector2(1, -52.750725)
+position = Vector2(0, -38.250725)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_kyqiw")
 

@@ -36,6 +36,7 @@ func _physics_process(_delta: float) -> void:
 		
 		velocity = (global_position - player_position) * knockback_taken
 		knockback_taken =0
+	velocity = velocity * 0.95
 	move_and_slide()
 func chase_target():
 	var distance_to_player: Vector2
