@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cib2sbvoidtr" path="res://Scenes/healing_item.tscn" id="8_7h23t"]
 [ext_resource type="Resource" uid="uid://dklxkgetrwn6c" path="res://Resources/Heart.tres" id="10_s7evf"]
 [ext_resource type="PackedScene" uid="uid://ca1v63kw8m4rf" path="res://Scenes/arrow_projectile.tscn" id="11_0k7nw"]
+[ext_resource type="AudioStream" uid="uid://0so4p6kw7sfn" path="res://Sounds/Knife Swish.mp3.mp3" id="11_2nv37"]
 [ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="11_np8lt"]
 [ext_resource type="Script" uid="uid://bbxoismbjm4dj" path="res://Resources/arrow_resource.gd" id="12_np8lt"]
+[ext_resource type="AudioStream" uid="uid://bk1hg8sjlacl5" path="res://Sounds/alex_jauk-slap-237622.mp3" id="13_x6hpk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
 texture = ExtResource("1_7fr83")
@@ -728,7 +730,7 @@ script = ExtResource("12_np8lt")
 direction = 3
 damage = 100
 knockback = 10
-target = "Enemy"
+target = "Player"
 speed = 5.0
 metadata/_custom_type_script = "uid://bbxoismbjm4dj"
 
@@ -773,9 +775,44 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(477, 342)
 collision_mask = 137
+health = 200
+mana = 200
+SPEED = 350.0
+sword_swish_sfx = ExtResource("11_2nv37")
 sword_hit_flesh_sfx = ExtResource("4_0k7nw")
+example_sound = ExtResource("13_x6hpk")
 metadata/_edit_use_anchors_ = true
 
 [node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("11_np8lt")]
 unique_name_in_owner = true
-z_index = 2
+z_index = 5
+
+[node name="Placeholder Enemy2" parent="objects that pause" unique_id=985281800 instance=ExtResource("3_6bry8")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1396, -200)
+attributes = SubResource("Resource_x6hpk")
+
+[node name="Placeholder Enemy3" parent="objects that pause" unique_id=78718390 instance=ExtResource("3_6bry8")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-283, 845)
+attributes = SubResource("Resource_x6hpk")
+
+[node name="Placeholder Enemy4" parent="objects that pause" unique_id=257747434 instance=ExtResource("3_6bry8")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(56, -471)
+attributes = SubResource("Resource_x6hpk")
+
+[node name="Placeholder Enemy5" parent="objects that pause" unique_id=829219418 instance=ExtResource("3_6bry8")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1466, 650)
+attributes = SubResource("Resource_x6hpk")
+
+[node name="Placeholder Enemy6" parent="objects that pause" unique_id=1173697949 instance=ExtResource("3_6bry8")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-654, 40)
+attributes = SubResource("Resource_x6hpk")

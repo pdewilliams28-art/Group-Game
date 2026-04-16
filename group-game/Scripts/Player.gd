@@ -23,6 +23,7 @@ var stagger = false
 @onready var audio_player = %"Sound_effects"
 @onready var health_bar: TextureProgressBar = %"Health Bar"
 @onready var mana_bar: TextureProgressBar = %"Mana Bar"
+
 func _ready() -> void:
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
@@ -211,12 +212,15 @@ func _on_dodge_cooldown_timeout() -> void:
 func _on_interaction_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Interactable"):
 		interactable_trigger = true
+		interactable = body
+		print(interactable)
 	
 
 
 @warning_ignore("unused_parameter")
 func _on_interaction_range_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body.is_in_group("Interactable"):
+		interactable_trigger = false
 
 
 
