@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://1tl6csya2jn7" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://uidlqq6l7s38" path="res://Sprites/Player.webp" id="2_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://cwgj0k5y6grqx" path="res://Sprites/Sword.png" id="3_gntrk"]
 [ext_resource type="Texture2D" uid="uid://drshh4n85u758" path="res://Sprites/Health Bar Under Player.png" id="3_5ixxa"]
 [ext_resource type="Script" uid="uid://cywuut585clli" path="res://Scripts/sword_attack.gd" id="3_bhhdu"]
+[ext_resource type="Texture2D" uid="uid://cwgj0k5y6grqx" path="res://Sprites/Sword.png" id="3_gntrk"]
 [ext_resource type="AudioStream" uid="uid://cc4uwmpk2xqbe" path="res://Sounds/johnnybacon156-fah-469417.mp3" id="4_megsn"]
 [ext_resource type="Texture2D" uid="uid://cr5u4t830cdgk" path="res://Sprites/Health Bar Over Player.png" id="4_nn08x"]
 [ext_resource type="Texture2D" uid="uid://cynuh6c4us05l" path="res://Sprites/Health Bar Progress Player.png" id="5_5ixxa"]
@@ -888,7 +888,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-size = Vector2(102, 49.875)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntrk"]
 radius = 28.0
@@ -902,6 +901,12 @@ radius = 28.01785
 
 [node name="Player" type="CharacterBody2D" unique_id=545131653 groups=["Player"]]
 script = ExtResource("1_rpqav")
+health = null
+mana = null
+SPEED = null
+sword_swish_sfx = null
+sword_hit_flesh_sfx = null
+example_sound = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
 texture_filter = 1
