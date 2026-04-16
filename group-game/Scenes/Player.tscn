@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1tl6csya2jn7" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://uidlqq6l7s38" path="res://Sprites/Player.webp" id="2_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://cwgj0k5y6grqx" path="res://Sprites/Sword.png" id="3_gntrk"]
 [ext_resource type="Texture2D" uid="uid://drshh4n85u758" path="res://Sprites/Health Bar Under Player.png" id="3_5ixxa"]
 [ext_resource type="Script" uid="uid://cywuut585clli" path="res://Scripts/sword_attack.gd" id="3_bhhdu"]
 [ext_resource type="AudioStream" uid="uid://cc4uwmpk2xqbe" path="res://Sounds/johnnybacon156-fah-469417.mp3" id="4_megsn"]
@@ -570,9 +571,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword_Attack/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Sword_Down"]
+}
 
 [sub_resource type="Animation" id="Animation_dewec"]
 resource_name = "Sword_Down"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -592,10 +606,22 @@ tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.71666664, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword_Attack/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [&"Sword_Down", &"default"]
 }
 
 [sub_resource type="Animation" id="Animation_5ixxa"]
@@ -630,6 +656,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_52ee3"]
 resource_name = "Sword_Left"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -649,14 +676,27 @@ tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.18333334, 0.71666664, 1.0166667, 1.1333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword_Attack/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [&"Sword_Down", &"default"]
 }
 
 [sub_resource type="Animation" id="Animation_bhhdu"]
 resource_name = "Sword_Right"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -676,14 +716,27 @@ tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 1.3, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword_Attack/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [&"Sword_Down", &"default"]
 }
 
 [sub_resource type="Animation" id="Animation_megsn"]
 resource_name = "Sword_Up"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -703,10 +756,22 @@ tracks/1/path = NodePath("Sword_Attack/Hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.016666668, 0.2),
+"times": PackedFloat32Array(0.016666668, 0.2, 0.7333333, 1.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword_Attack/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [&"Sword_Down", &"default"]
 }
 
 [sub_resource type="Animation" id="Animation_yoq75"]
@@ -753,7 +818,77 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(36, 20.375)
+size = Vector2(114.38042, 80.87645)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4i3a"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rocfp"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uytvf"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7lb4"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed4yo"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsa4a"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f3s4"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3y8b"]
+atlas = ExtResource("3_gntrk")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ujsok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4i3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rocfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uytvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7lb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed4yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsa4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f3s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3y8b")
+}],
+"loop": true,
+"name": &"Sword_Down",
+"speed": 24.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+size = Vector2(102, 49.875)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntrk"]
 radius = 28.0
@@ -773,7 +908,7 @@ texture_filter = 1
 position = Vector2(0.99999994, -19.999998)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"Roll_Up"
+animation = &"Down"
 
 [node name="Dodge_Timer" type="Timer" parent="." unique_id=2078185050]
 wait_time = 0.5
@@ -803,6 +938,15 @@ damage = 20
 position = Vector2(1, -38.625)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_kyqiw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sword_Attack" unique_id=1906572897]
+visible = false
+position = Vector2(-0.23458861, 0.17604733)
+rotation = 3.1415927
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_ujsok")
+animation = &"Sword_Down"
+offset = Vector2(-0.10908653, 5.4956717)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1993944495]
 position = Vector2(0, 10)
