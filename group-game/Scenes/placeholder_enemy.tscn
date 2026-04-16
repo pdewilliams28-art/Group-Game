@@ -124,3 +124,4 @@ frame_progress = 0.51351064
 [connection signal="body_entered" from="Detection Range" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="Detection Range" to="." method="_on_detection_range_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

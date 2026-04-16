@@ -28,6 +28,7 @@ window/stretch/mode="viewport"
 
 Interactable="Interactables: notes, chests, maps, etc."
 Enemy="any object that can chase and deal damage to the player"
+Player=""
 
 [input]
 

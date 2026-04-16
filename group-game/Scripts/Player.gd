@@ -1,6 +1,7 @@
 
 extends CharacterBody2D
 class_name Player
+signal attack
 @export var health: int = 200
 var max_health: int = health
 @export var mana: int = 200
@@ -108,10 +109,10 @@ func _physics_process(_delta: float) -> void:
 func Attack():
 	attacking = true
 	$Attack_Timer.start()
-	print(attacking)
+	#print(attacking)
 	$Sword_Attack/Hitbox.disabled = false
 	velocity = Vector2(0, 0)
-	playsound_with_pitch_variation(sword_swish_sfx,0.2)
+	emit_signal("attack")
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
 		$AnimationPlayer.play("Sword_Up")
 		$AnimatedSprite2D.play("Attack_Up")
@@ -139,25 +140,7 @@ func _process(_delta: float) -> void:
 		#print("hit!")
 		if body.is_in_group("Enemy"):
 			if Invincible == false:
-				if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
-					health -= body.damage
-					print(health)
-					velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
-					print(velocity)
-					Invincible = true
-					$Invincibility_Timer.start()
-					stagger = true
-					playsound_and_wait(example_sound)
-				else:
-					health -= body.damage
-					print(health)
-					#add velocity in random direction
-					var randv = randf_range(-PI,PI)
-					velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
-					print(velocity)
-					Invincible = true
-					$Invincibility_Timer.start()
-					playsound_and_wait(example_sound)
+				_damage(body)
 	if health <= 0:
 		get_tree().call_deferred("reload_current_scene")
 	update_health_bar(health, max_health)
@@ -259,16 +242,40 @@ func _on_attack_timer_timeout() -> void:
 
 
 func playsound_and_wait(sound):
-	audio_player.stream = sound
+	var sfx: AudioStream = sound
+	audio_player.stream = sfx
 	var audio_length = audio_player.stream.get_length()
 	audio_player.play()
 	await get_tree().create_timer(audio_length +0.1).timeout
 
 func playsound(sound):
-	audio_player.stream = sound
+	var sfx: AudioStream = sound
+	audio_player.stream = sfx
 	audio_player.play()
 
 func playsound_with_pitch_variation(sound,pitch_variation):
-	audio_player.stream = sound
+	var sfx: AudioStream = sound
+	audio_player.stream = sfx
 	audio_player.pitch_scale = randf_range(1-pitch_variation, 1+pitch_variation)
 	audio_player.play()
+func _damage(body: Node2D):
+	if Invincible == false:
+		if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
+			health -= body.damage
+			print(health)
+			velocity += Vector2((position.x-body.position.x)*body.knockback,(position.y-body.position.y)*body.knockback)
+			print(velocity)
+			Invincible = true
+			$Invincibility_Timer.start()
+			stagger = true
+			playsound_and_wait(example_sound)
+		else:
+			health -= body.damage
+			print(health)
+			#add velocity in random direction
+			var randv = randf_range(-PI,PI)
+			velocity = Vector2(cos(randv),sin(randv))*50*body.knockback
+			print(velocity)
+			Invincible = true
+			$Invincibility_Timer.start()
+			playsound_and_wait(example_sound)

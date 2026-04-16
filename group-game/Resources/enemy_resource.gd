@@ -5,3 +5,5 @@ class_name Enemy_resource
 @export var damage: int
 @export var knockback: float
 @export var texture: SpriteFrames
+##knockback_resistance would be between 0-100. would take x% of knockback and subtract it from it
+@export var knockback_resistance: int
