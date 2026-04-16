@@ -961,19 +961,13 @@ radius = 28.01785
 
 [node name="Player" type="CharacterBody2D" unique_id=545131653 groups=["Player"]]
 script = ExtResource("1_rpqav")
-health = null
-mana = null
-SPEED = null
-sword_swish_sfx = null
-sword_hit_flesh_sfx = null
-example_sound = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
 texture_filter = 1
 position = Vector2(0.99999994, -19.999998)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"Down"
+animation = &"Attack_Up"
 
 [node name="Dodge_Timer" type="Timer" parent="." unique_id=2078185050]
 wait_time = 0.5
@@ -1034,6 +1028,7 @@ shape = SubResource("CircleShape2D_dewec")
 
 [node name="Attack_Timer" type="Timer" parent="." unique_id=861477607]
 wait_time = 0.2
+one_shot = true
 
 [node name="Sound_effects" type="AudioStreamPlayer" parent="." unique_id=1967099728]
 unique_name_in_owner = true

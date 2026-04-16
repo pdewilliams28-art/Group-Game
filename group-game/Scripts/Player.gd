@@ -23,7 +23,7 @@ var stagger = false
 @onready var audio_player = %"Sound_effects"
 @onready var health_bar: TextureProgressBar = %"Health Bar"
 @onready var mana_bar: TextureProgressBar = %"Mana Bar"
-
+var Arrow_SCENE: PackedScene = preload("res://Scenes/arrow_projectile.tscn")
 func _ready() -> void:
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
@@ -105,12 +105,67 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Attack") and attacking == false and stagger == false and dodge == false:
 		Attack()
 	if Input.is_action_just_pressed("Shoot bow") and attacking == false and stagger == false and dodge == false:
-		Attack()
+		shoot_bow()
 	move_and_slide()
 	
+func shoot_bow():
+	attacking = true
+	$Attack_Timer.wait_time = 0.4
+	$Attack_Timer.start()
+	velocity = Vector2(0,0)
+	emit_signal("attack")
+	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
+		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
+		spawn_resource.direction = 2
+		spawn_resource.damage = 20
+		spawn_resource.knockback = 100
+		spawn_resource.target = str("Enemy")
+		spawn_resource.speed = 20
+		var new_instance = Arrow_SCENE.instantiate()
+		new_instance.Attributes = spawn_resource
+		new_instance.global_position = global_position
+		get_parent().add_child(new_instance)
+		$AnimatedSprite2D.play("Attack_Up")
+	elif $AnimatedSprite2D.animation == "Down" or $AnimatedSprite2D.animation == "Down_Idle":
+		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
+		spawn_resource.direction = 4
+		spawn_resource.damage = 20
+		spawn_resource.knockback = 100
+		spawn_resource.target = str("Enemy")
+		spawn_resource.speed = 20
+		var new_instance = Arrow_SCENE.instantiate()
+		new_instance.Attributes = spawn_resource
+		new_instance.global_position = global_position
+		get_parent().add_child(new_instance)
+		$AnimatedSprite2D.play("Attack_Down")
+	elif $AnimatedSprite2D.animation == "Left" or $AnimatedSprite2D.animation == "Left_Idle":
+		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
+		spawn_resource.direction = 3
+		spawn_resource.damage = 20
+		spawn_resource.knockback = 100
+		spawn_resource.target = str("Enemy")
+		spawn_resource.speed = 20
+		$AnimatedSprite2D.play("Attack_Left")
+		var new_instance = Arrow_SCENE.instantiate()
+		new_instance.Attributes = spawn_resource
+		new_instance.global_position = global_position
+		get_parent().add_child(new_instance)
+	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
+		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
+		spawn_resource.direction = 1
+		spawn_resource.damage = 20
+		spawn_resource.knockback = 100
+		spawn_resource.target = str("Enemy")
+		spawn_resource.speed = 20
+		var new_instance = Arrow_SCENE.instantiate()
+		new_instance.Attributes = spawn_resource
+		new_instance.global_position = global_position
+		get_parent().add_child(new_instance)
+		$AnimatedSprite2D.play("Attack_Right")
 
 func Attack():
 	attacking = true
+	$Attack_Timer.wait_time = 0.2
 	$Attack_Timer.start()
 	#print(attacking)
 	$Sword_Attack/Hitbox.disabled = false
