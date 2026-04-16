@@ -5,9 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://db7y48rt5wr8g" path="res://Scenes/placeholder_enemy.tscn" id="3_6bry8"]
 [ext_resource type="AudioStream" uid="uid://cc4uwmpk2xqbe" path="res://Sounds/johnnybacon156-fah-469417.mp3" id="4_0k7nw"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
+[ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="4_ibde2"]
+[ext_resource type="Texture2D" uid="uid://bktytlqt00dkw" path="res://Sprites/Slime.png" id="5_0k7nw"]
 [ext_resource type="PackedScene" uid="uid://cib2sbvoidtr" path="res://Scenes/healing_item.tscn" id="8_7h23t"]
 [ext_resource type="Resource" uid="uid://dklxkgetrwn6c" path="res://Resources/Heart.tres" id="10_s7evf"]
 [ext_resource type="PackedScene" uid="uid://ca1v63kw8m4rf" path="res://Scenes/arrow_projectile.tscn" id="11_0k7nw"]
+[ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="11_np8lt"]
 [ext_resource type="Script" uid="uid://bbxoismbjm4dj" path="res://Resources/arrow_resource.gd" id="12_np8lt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
@@ -647,6 +650,79 @@ terrain_set_0/terrain_1/name = "Lava 1"
 terrain_set_0/terrain_1/color = Color(0.8784314, 0.3254902, 0.043137256, 1)
 sources/1 = SubResource("TileSetAtlasSource_5yw3w")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_np8lt"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nv37"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6hpk"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vndvl"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2luv"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvjdo"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuq17"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bme7k"]
+atlas = ExtResource("5_0k7nw")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp6f3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np8lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nv37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6hpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vndvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2luv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvjdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuq17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bme7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_x6hpk"]
+script = ExtResource("4_ibde2")
+health = 100
+speed = 250.0
+damage = 20
+knockback = 25.0
+texture = SubResource("SpriteFrames_hp6f3")
+metadata/_custom_type_script = "uid://btt3ua54m0t7e"
+
 [sub_resource type="Resource" id="Resource_2nv37"]
 script = ExtResource("12_np8lt")
 direction = 3
@@ -666,7 +742,6 @@ process_mode = 1
 y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="objects that pause" unique_id=504227716]
-z_index = 1
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(-2586, -1296)
@@ -675,31 +750,32 @@ tile_map_data = PackedByteArray("AAAfABkAAQAbAAAAAAASAAcAAQAeAAMAAAASAAgAAQAbAAA
 tile_set = SubResource("TileSet_qtktj")
 
 [node name="Placeholder Enemy" parent="objects that pause" unique_id=1486502611 instance=ExtResource("3_6bry8")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(733, 325)
+attributes = SubResource("Resource_x6hpk")
 
 [node name="Healing item" parent="objects that pause" unique_id=1658949148 instance=ExtResource("8_7h23t")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(660, 463)
 Attributes = ExtResource("10_s7evf")
 
 [node name="Arrow Projectile" parent="objects that pause" unique_id=1003716676 instance=ExtResource("11_0k7nw")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(803, 375)
 Attributes = SubResource("Resource_2nv37")
 
-[node name="Player" parent="." unique_id=1014740986 instance=ExtResource("4_4y1r4")]
+[node name="Player" parent="objects that pause" unique_id=1014740986 instance=ExtResource("4_4y1r4")]
 unique_name_in_owner = true
-z_index = 2
+z_index = 1
 y_sort_enabled = true
 position = Vector2(477, 342)
 collision_mask = 137
 sword_hit_flesh_sfx = ExtResource("4_0k7nw")
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="Player" unique_id=612396149]
-process_mode = 3
-offset_left = 624.0
-offset_top = -397.0
-offset_right = 720.0
-offset_bottom = -350.0
-text = "Pause"
-
-[node name="Placeholder Enemy" parent="." unique_id=1207656813 instance=ExtResource("3_6bry8")]
+[node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("11_np8lt")]
+unique_name_in_owner = true
 z_index = 2
