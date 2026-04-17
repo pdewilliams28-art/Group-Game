@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://phettcph7fxa"]
 
-[ext_resource type="Script" uid="uid://rdcxd5y5k7ug" path="res://eye_boss.gd" id="1_hq5wm"]
-[ext_resource type="Texture2D" uid="uid://bhy8exp2h2rqa" path="res://FireEnemy.png" id="1_yjfu0"]
+[ext_resource type="Script" uid="uid://rdcxd5y5k7ug" path="res://Scripts/eye_boss.gd" id="1_hq5wm"]
+[ext_resource type="Texture2D" uid="uid://bhy8exp2h2rqa" path="res://Sprites/FireEnemy.png" id="1_yjfu0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hq5wm"]
 radius = 3.0594115

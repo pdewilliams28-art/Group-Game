@@ -9,9 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bktytlqt00dkw" path="res://Sprites/Slime.png" id="5_0k7nw"]
 [ext_resource type="PackedScene" uid="uid://cib2sbvoidtr" path="res://Scenes/healing_item.tscn" id="8_7h23t"]
 [ext_resource type="Resource" uid="uid://dklxkgetrwn6c" path="res://Resources/Heart.tres" id="10_s7evf"]
-[ext_resource type="AudioStream" uid="uid://0so4p6kw7sfn" path="res://Sounds/Knife Swish.mp3.mp3" id="11_2nv37"]
 [ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="11_np8lt"]
-[ext_resource type="AudioStream" uid="uid://bk1hg8sjlacl5" path="res://Sounds/alex_jauk-slap-237622.mp3" id="13_x6hpk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
 texture = ExtResource("1_7fr83")
@@ -718,7 +716,7 @@ animations = [{
 script = ExtResource("4_ibde2")
 health = 100
 speed = 250.0
-damage = 100
+damage = 10
 knockback = 25.0
 texture = SubResource("SpriteFrames_hp6f3")
 metadata/_custom_type_script = "uid://btt3ua54m0t7e"
@@ -751,13 +749,8 @@ unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
 position = Vector2(477, 342)
-collision_mask = 137
-health = 200
-mana = 200
-SPEED = 350.0
-sword_swish_sfx = ExtResource("11_2nv37")
+collision_mask = 9
 sword_hit_flesh_sfx = ExtResource("4_0k7nw")
-example_sound = ExtResource("13_x6hpk")
 metadata/_edit_use_anchors_ = true
 
 [node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("11_np8lt")]
