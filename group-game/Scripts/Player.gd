@@ -20,6 +20,7 @@ var interactable = NAN
 var direction: int = 0
 var attacking = false
 var stagger = false
+@export var arrows: int
 @export var sword_swish_sfx: AudioStream = preload("res://Sounds/Knife Swish.mp3.mp3")
 @export var sword_hit_flesh_sfx: AudioStream = preload("res://Sounds/Sword Hit Flesh.mp3.mp3")
 @export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
@@ -108,7 +109,9 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Attack") and attacking == false and stagger == false and dodge == false:
 		Attack()
 	if Input.is_action_just_pressed("Shoot bow") and attacking == false and stagger == false and dodge == false:
-		shoot_bow()
+		if arrows > 0:
+			shoot_bow()
+			arrows -=1
 	move_and_slide()
 	
 func shoot_bow():
@@ -196,6 +199,7 @@ func Attack():
 		$Sword_Attack/AnimatedSprite2D.visible = true
 
 func _process(_delta: float) -> void:
+	$Control/Label.text = str(arrows)
 	var bodies = $Hurtbox.get_overlapping_bodies()
 	for body in bodies:
 		#print("hit!")

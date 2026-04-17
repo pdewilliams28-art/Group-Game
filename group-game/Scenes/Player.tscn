@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://qgw3utbt3bvk" path="res://Sprites/Mana Bar Under Player.png.png" id="6_bhhdu"]
 [ext_resource type="Texture2D" uid="uid://butokaksx2em7" path="res://Sprites/Mana Bar Over Player.png.png" id="7_megsn"]
 [ext_resource type="Texture2D" uid="uid://7rv23rabf8s" path="res://Sprites/Sword Outline Bg.png" id="8_lslt6"]
+[ext_resource type="Texture2D" uid="uid://jdqrjufkd4ak" path="res://Sprites/Arrow UI.png" id="10_lslt6"]
 [ext_resource type="Texture2D" uid="uid://bc33ty18sd7im" path="res://Sprites/Background HUD ui.png" id="11_1e7my"]
 [ext_resource type="Texture2D" uid="uid://dxmre2m766e8a" path="res://Sprites/Sword Ui element1.png" id="11_glx4g"]
 [ext_resource type="Texture2D" uid="uid://cmtgycydbofae" path="res://Sprites/Bow Ui element2.png" id="12_miouo"]
@@ -968,6 +969,7 @@ radius = 28.01785
 [node name="Player" type="CharacterBody2D" unique_id=545131653 groups=["Player"]]
 script = ExtResource("1_rpqav")
 arrow_damage = 10
+arrows = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
 texture_filter = 1
@@ -1102,6 +1104,15 @@ offset_bottom = 126.0
 texture = ExtResource("12_miouo")
 expand_mode = 2
 
+[node name="TextureRectArrowNum" type="TextureRect" parent="Control" unique_id=1779461565]
+layout_mode = 0
+offset_left = -1112.1934
+offset_top = -23.47286
+offset_right = -986.19336
+offset_bottom = 102.52714
+texture = ExtResource("10_lslt6")
+expand_mode = 2
+
 [node name="TextureRectLeftClick" type="TextureRect" parent="Control" unique_id=1524104297]
 layout_mode = 0
 offset_top = 60.0
@@ -1149,6 +1160,14 @@ value = 1.0
 texture_under = ExtResource("6_bhhdu")
 texture_over = ExtResource("7_megsn")
 texture_progress = ExtResource("5_5ixxa")
+
+[node name="Label" type="Label" parent="Control" unique_id=1083286126]
+layout_mode = 0
+offset_left = -991.89496
+offset_top = -5.8682137
+offset_right = -926.89496
+offset_bottom = 17.131786
+scale = Vector2(3.6993756, 3.6993756)
 
 [connection signal="attack" from="." to="Sword_Attack" method="_on_player_attack"]
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
