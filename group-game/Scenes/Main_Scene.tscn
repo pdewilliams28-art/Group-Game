@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bktytlqt00dkw" path="res://Sprites/Slime.png" id="5_0k7nw"]
 [ext_resource type="PackedScene" uid="uid://cib2sbvoidtr" path="res://Scenes/healing_item.tscn" id="8_7h23t"]
 [ext_resource type="Resource" uid="uid://dklxkgetrwn6c" path="res://Resources/Heart.tres" id="10_s7evf"]
+[ext_resource type="PackedScene" uid="uid://brsjci211w5lc" path="res://block.tscn" id="11_ibde2"]
 [ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="11_np8lt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
@@ -762,3 +763,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(733, 325)
 attributes = SubResource("Resource_x6hpk")
+
+[node name="Block" parent="." unique_id=849349803 instance=ExtResource("11_ibde2")]
+z_index = 2
+position = Vector2(145, 45)
