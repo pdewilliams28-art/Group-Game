@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyfnmamvmiyfe"
-path="res://.godot/imported/GroupGameTileset (1).png-8b82b4c899aa7af4ae7837f97b911586.ctex"
+path="res://.godot/imported/GroupGameTileset (1).png-3f369b3eb4c2de18d6f25c5d08e5b936.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GroupGameTileset (1).png"
-dest_files=["res://.godot/imported/GroupGameTileset (1).png-8b82b4c899aa7af4ae7837f97b911586.ctex"]
+source_file="res://tilesets/GroupGameTileset (1).png"
+dest_files=["res://.godot/imported/GroupGameTileset (1).png-3f369b3eb4c2de18d6f25c5d08e5b936.ctex"]
 
 [params]
 

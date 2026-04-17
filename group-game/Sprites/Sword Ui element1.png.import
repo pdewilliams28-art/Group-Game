@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhy8exp2h2rqa"
-path="res://.godot/imported/FireEnemy.png-3e036e897d8314613e5148758ea01f47.ctex"
+uid="uid://dxmre2m766e8a"
+path="res://.godot/imported/Sword Ui element1.png-c1cdca1846fcd55b6b08fb9094ddbb79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FireEnemy.png"
-dest_files=["res://.godot/imported/FireEnemy.png-3e036e897d8314613e5148758ea01f47.ctex"]
+source_file="res://Sprites/Sword Ui element1.png"
+dest_files=["res://.godot/imported/Sword Ui element1.png-c1cdca1846fcd55b6b08fb9094ddbb79.ctex"]
 
 [params]
 

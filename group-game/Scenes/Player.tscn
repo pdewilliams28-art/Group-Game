@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://cynuh6c4us05l" path="res://Sprites/Health Bar Progress Player.png" id="5_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://qgw3utbt3bvk" path="res://Sprites/Mana Bar Under Player.png.png" id="6_bhhdu"]
 [ext_resource type="Texture2D" uid="uid://butokaksx2em7" path="res://Sprites/Mana Bar Over Player.png.png" id="7_megsn"]
+[ext_resource type="Texture2D" uid="uid://dxmre2m766e8a" path="res://Sprites/Sword Ui element1.png" id="11_glx4g"]
+[ext_resource type="Texture2D" uid="uid://cmtgycydbofae" path="res://Sprites/Bow Ui element2.png" id="12_miouo"]
+[ext_resource type="Texture2D" uid="uid://bwnmcn0qwmyas" path="res://Sprites/Left click ui.png" id="12_o3h8g"]
+[ext_resource type="Texture2D" uid="uid://bs702ypb80q1g" path="res://Sprites/Right click ui.png" id="14_1e7my"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("2_kyqiw")
@@ -1064,6 +1068,49 @@ value = 1.0
 texture_under = ExtResource("6_bhhdu")
 texture_over = ExtResource("7_megsn")
 texture_progress = ExtResource("5_5ixxa")
+
+[node name="Control" type="Control" parent="." unique_id=2145874303]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -126.0
+offset_top = -320.0
+offset_right = 130.0
+offset_bottom = -120.0
+scale = Vector2(0.34081912, 0.34081912)
+pivot_offset = Vector2(126, 0)
+
+[node name="TextureRectSword" type="TextureRect" parent="Control" unique_id=1768317904]
+layout_mode = 0
+offset_left = -63.0
+offset_right = 63.0
+offset_bottom = 126.0
+texture = ExtResource("11_glx4g")
+expand_mode = 2
+
+[node name="TextureRectLeftClick" type="TextureRect" parent="Control" unique_id=1524104297]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 126.0
+offset_bottom = 186.0
+texture = ExtResource("12_o3h8g")
+expand_mode = 2
+
+[node name="TextureRectBow" type="TextureRect" parent="Control" unique_id=1321512414]
+layout_mode = 0
+offset_left = 189.0
+offset_right = 315.0
+offset_bottom = 126.0
+texture = ExtResource("12_miouo")
+expand_mode = 2
+
+[node name="TextureRectRightClick" type="TextureRect" parent="Control" unique_id=728173614]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 186.0
+texture = ExtResource("14_1e7my")
+expand_mode = 2
 
 [connection signal="attack" from="." to="Sword_Attack" method="_on_player_attack"]
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
