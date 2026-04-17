@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cifx3cl6ek1wn"]
+
+[ext_resource type="Texture2D" uid="uid://dccsr1qino171" path="res://Folders/Sprites/Paper-1.png.png" id="1_nxvpl"]
+[ext_resource type="FontFile" uid="uid://de365qfa8dxaq" path="res://Folders/Fonts/blocks-serif.ttf" id="2_dewlx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hfhsn"]
+font = ExtResource("2_dewlx")
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" unique_id=62056447]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=808374303]
+z_index = 2
+layout_mode = 0
+offset_left = 381.0
+offset_top = 131.0
+offset_right = 805.0
+offset_bottom = 451.0
+scale = Vector2(1.2, 1.2)
+text = "hello world!"
+label_settings = SubResource("LabelSettings_hfhsn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1684028072]
+z_index = 1
+layout_mode = 0
+offset_left = 381.0
+offset_top = 131.0
+offset_right = 805.0
+offset_bottom = 451.0
+scale = Vector2(1.2, 1.2)
+color = Color(1, 1, 1, 0.8627451)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1628639722]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 424.0
+offset_bottom = 384.0
+scale = Vector2(2.3144178, 1.689139)
+color = Color(1, 1, 1, 0.23529412)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=760234240]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 88.0
+offset_top = 160.0
+offset_right = 136.0
+offset_bottom = 208.0
+scale = Vector2(6.7, 6.7)
+texture = ExtResource("1_nxvpl")
