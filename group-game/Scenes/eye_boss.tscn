@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://phettcph7fxa"]
 
-[ext_resource type="Script" uid="uid://rdcxd5y5k7ug" path="res://eye_boss.gd" id="1_hq5wm"]
-[ext_resource type="Texture2D" uid="uid://bhy8exp2h2rqa" path="res://FireEnemy.png" id="1_yjfu0"]
+[ext_resource type="Script" uid="uid://rdcxd5y5k7ug" path="res://Scripts/eye_boss.gd" id="1_hq5wm"]
+[ext_resource type="Texture2D" uid="uid://bhy8exp2h2rqa" path="res://Sprites/FireEnemy.png" id="1_yjfu0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hq5wm"]
 radius = 3.0594115
@@ -112,10 +112,10 @@ animations = [{
 
 [node name="EyeBoss" type="CharacterBody2D" unique_id=1206639849]
 z_index = 1
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 script = ExtResource("1_hq5wm")
 
-[node name="Hitbox and Hurtbox" type="CollisionShape2D" parent="." unique_id=1691397334]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1691397334]
 unique_name_in_owner = true
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_hq5wm")
@@ -125,3 +125,9 @@ sprite_frames = SubResource("SpriteFrames_hfqeg")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.8599141
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=598251674]
+
+[node name="Timer" type="Timer" parent="." unique_id=1673297569]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

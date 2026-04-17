@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhy8exp2h2rqa"
-path="res://.godot/imported/FireEnemy.png-3e036e897d8314613e5148758ea01f47.ctex"
+uid="uid://bc33ty18sd7im"
+path="res://.godot/imported/Background HUD ui.png-64349b54ef9b7c05a5a6e80a05b07c95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FireEnemy.png"
-dest_files=["res://.godot/imported/FireEnemy.png-3e036e897d8314613e5148758ea01f47.ctex"]
+source_file="res://Sprites/Background HUD ui.png"
+dest_files=["res://.godot/imported/Background HUD ui.png-64349b54ef9b7c05a5a6e80a05b07c95.ctex"]
 
 [params]
 
