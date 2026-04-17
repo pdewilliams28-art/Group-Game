@@ -7,6 +7,9 @@ var max_health: int = health
 @export var mana: int = 200
 var max_mana: int = mana
 @export var SPEED: float = 350.0
+@export var arrow_damage: int = 20
+@export var arrow_speed: float = 20
+@export var arrow_knockback: float = 20
 const JUMP_VELOCITY = -400.0
 const accel = 100
 var dodge: bool = false
@@ -117,8 +120,8 @@ func shoot_bow():
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 2
-		spawn_resource.damage = 20
-		spawn_resource.knockback = 100
+		spawn_resource.damage = arrow_damage
+		spawn_resource.knockback = arrow_knockback
 		spawn_resource.target = str("Enemy")
 		spawn_resource.speed = 20
 		var new_instance = Arrow_SCENE.instantiate()
@@ -129,10 +132,10 @@ func shoot_bow():
 	elif $AnimatedSprite2D.animation == "Down" or $AnimatedSprite2D.animation == "Down_Idle":
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 4
-		spawn_resource.damage = 20
-		spawn_resource.knockback = 100
+		spawn_resource.damage = arrow_damage
+		spawn_resource.knockback = arrow_knockback
 		spawn_resource.target = str("Enemy")
-		spawn_resource.speed = 20
+		spawn_resource.speed = arrow_speed
 		var new_instance = Arrow_SCENE.instantiate()
 		new_instance.Attributes = spawn_resource
 		new_instance.global_position = global_position
@@ -141,10 +144,10 @@ func shoot_bow():
 	elif $AnimatedSprite2D.animation == "Left" or $AnimatedSprite2D.animation == "Left_Idle":
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 3
-		spawn_resource.damage = 20
-		spawn_resource.knockback = 100
+		spawn_resource.damage = arrow_damage
+		spawn_resource.knockback = arrow_knockback
 		spawn_resource.target = str("Enemy")
-		spawn_resource.speed = 20
+		spawn_resource.speed = arrow_speed
 		$AnimatedSprite2D.play("Attack_Left")
 		var new_instance = Arrow_SCENE.instantiate()
 		new_instance.Attributes = spawn_resource
@@ -153,10 +156,10 @@ func shoot_bow():
 	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 1
-		spawn_resource.damage = 20
-		spawn_resource.knockback = 100
+		spawn_resource.damage = arrow_damage
+		spawn_resource.knockback = arrow_knockback
 		spawn_resource.target = str("Enemy")
-		spawn_resource.speed = 20
+		spawn_resource.speed = arrow_speed
 		var new_instance = Arrow_SCENE.instantiate()
 		new_instance.Attributes = spawn_resource
 		new_instance.global_position = global_position
