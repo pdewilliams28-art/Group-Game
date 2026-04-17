@@ -112,10 +112,10 @@ animations = [{
 
 [node name="EyeBoss" type="CharacterBody2D" unique_id=1206639849]
 z_index = 1
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 script = ExtResource("1_hq5wm")
 
-[node name="Hitbox and Hurtbox" type="CollisionShape2D" parent="." unique_id=1691397334]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1691397334]
 unique_name_in_owner = true
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_hq5wm")
@@ -125,3 +125,9 @@ sprite_frames = SubResource("SpriteFrames_hfqeg")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.8599141
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=598251674]
+
+[node name="Timer" type="Timer" parent="." unique_id=1673297569]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -29,6 +29,7 @@ window/stretch/mode="viewport"
 Interactable="Interactables: notes, chests, maps, etc."
 Enemy="any object that can chase and deal damage to the player"
 Player=""
+Movable="Things the player can move"
 
 [input]
 
@@ -86,6 +87,7 @@ Attack={
 2d_physics/layer_3="Player Weapon"
 2d_physics/layer_4="Tilemap"
 2d_physics/layer_5="Consumables"
+2d_physics/layer_6="Movable"
 
 [physics]
 

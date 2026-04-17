@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://brsjci211w5lc"]
+
+[ext_resource type="Texture2D" uid="uid://cyfnmamvmiyfe" path="res://GroupGameTileset (1).png" id="1_im0tn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_im0tn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qncar"]
+size = Vector2(58, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfwl5"]
+atlas = ExtResource("1_im0tn")
+region = Rect2(311.59293, 194.16632, 23.7919, 20.526337)
+
+[node name="Block" type="RigidBody2D" unique_id=849349803 groups=["Movable"]]
+physics_material_override = SubResource("PhysicsMaterial_im0tn")
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41411187 groups=["Movable"]]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_qncar")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=796271978 groups=["Movable"]]
+scale = Vector2(2.2333333, 2.0263157)
+texture = SubResource("AtlasTexture_xfwl5")

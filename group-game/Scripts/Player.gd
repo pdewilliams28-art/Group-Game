@@ -20,7 +20,11 @@ var interactable = NAN
 var direction: int = 0
 var attacking = false
 var stagger = false
+<<<<<<< HEAD
 @export var arrows: int
+=======
+var push_strength: float = 100
+>>>>>>> 42d355828e8e27f2e04eb7bd76cf572aa0c005f3
 @export var sword_swish_sfx: AudioStream = preload("res://Sounds/Knife Swish.mp3.mp3")
 @export var sword_hit_flesh_sfx: AudioStream = preload("res://Sounds/Sword Hit Flesh.mp3.mp3")
 @export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
@@ -113,7 +117,7 @@ func _physics_process(_delta: float) -> void:
 			shoot_bow()
 			arrows -=1
 	move_and_slide()
-	
+	push_blocks()
 func shoot_bow():
 	attacking = true
 	$Attack_Timer.wait_time = 0.4
@@ -347,3 +351,12 @@ func _damage(body: Node2D):
 			Invincible = true
 			$Invincibility_Timer.start()
 			playsound_and_wait(example_sound)
+
+func push_blocks():
+	var collision:KinematicCollision2D = get_last_slide_collision()
+	if collision:
+		var collider_node = collision.get_collider()
+		print(collision.get_collider())
+		if collider_node.is_in_group("Movable"):
+			var collision_normal: Vector2 = collision.get_normal()
+			collider_node.apply_central_force(-collision_normal * push_strength)
