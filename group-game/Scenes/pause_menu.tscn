@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dl2gjoown3w1w"]
 
-
 [ext_resource type="Script" uid="uid://dihiis82th61x" path="res://Scripts/pause_menu.gd" id="1_hdmo1"]
 
 [node name="Pause Menu" type="Control" unique_id=1301557043]
