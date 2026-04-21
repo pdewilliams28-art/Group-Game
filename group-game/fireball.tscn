@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdani"]
 radius = 5.0
 
-[node name="fireball" type="Area2D" unique_id=322660990]
+[node name="fireball" type="Area2D" unique_id=322660990 groups=["Player"]]
 script = ExtResource("1_olwj8")
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=1843897067]
