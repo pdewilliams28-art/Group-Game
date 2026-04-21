@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cc4uwmpk2xqbe" path="res://Sounds/johnnybacon156-fah-469417.mp3" id="4_megsn"]
 [ext_resource type="Texture2D" uid="uid://cr5u4t830cdgk" path="res://Sprites/Health Bar Over Player.png" id="4_nn08x"]
 [ext_resource type="Texture2D" uid="uid://cynuh6c4us05l" path="res://Sprites/Health Bar Progress Player.png" id="5_5ixxa"]
+[ext_resource type="Texture2D" uid="uid://b8uog0xuvyk4c" path="res://Sprites/Bow Up.png" id="5_ulo2v"]
 [ext_resource type="Texture2D" uid="uid://qgw3utbt3bvk" path="res://Sprites/Mana Bar Under Player.png.png" id="6_bhhdu"]
 [ext_resource type="Texture2D" uid="uid://butokaksx2em7" path="res://Sprites/Mana Bar Over Player.png.png" id="7_megsn"]
 [ext_resource type="Texture2D" uid="uid://7rv23rabf8s" path="res://Sprites/Sword Outline Bg.png" id="8_lslt6"]
@@ -552,6 +553,118 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyqiw"]
 radius = 102.044106
 
+[sub_resource type="Animation" id="Animation_ulo2v"]
+resource_name = "Bow_Down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.141592653589793]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/BowSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_1iu4k"]
+resource_name = "Bow_Left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.71238898038469]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/BowSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5v66d"]
+resource_name = "Bow_Right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707963267948966]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/BowSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_m0x7a"]
+resource_name = "Bow_Up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword_Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword_Attack/BowSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_gntrk"]
 length = 0.001
 tracks/0/type = "value"
@@ -601,6 +714,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sword_Attack/BowSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_dewec"]
@@ -873,6 +998,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ixxa"]
 _data = {
+&"Bow_Down": SubResource("Animation_ulo2v"),
+&"Bow_Left": SubResource("Animation_1iu4k"),
+&"Bow_Right": SubResource("Animation_5v66d"),
+&"Bow_Up": SubResource("Animation_m0x7a"),
 &"RESET": SubResource("Animation_gntrk"),
 &"Sword_Down": SubResource("Animation_dewec"),
 &"Sword_DownLeft": SubResource("Animation_5ixxa"),
@@ -1016,6 +1145,11 @@ scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_ujsok")
 animation = &"Sword_Down"
 offset = Vector2(-0.10908653, 5.4956717)
+
+[node name="BowSprite" type="Sprite2D" parent="Sword_Attack" unique_id=1630331717]
+position = Vector2(0, -28)
+scale = Vector2(2.084171, 2.084171)
+texture = ExtResource("5_ulo2v")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1993944495]
 position = Vector2(0, 10)
