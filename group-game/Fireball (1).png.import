@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
+uid="uid://ch6g2yvpc2b07"
+=======
 uid="uid://6um3w27pslbj"
+>>>>>>> 59ea2f30c1c084f5f655d678b0212caa6d750bf4
 path="res://.godot/imported/Fireball (1).png-2883dcd1b72d16e25b300f221f4df5be.ctex"
 metadata={
 "vram_texture": false
