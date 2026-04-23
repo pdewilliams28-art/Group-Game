@@ -100,19 +100,16 @@ func _damage(body: Node2D):
 	if player.is_in_group("Player"):
 		player.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
 	if health <= 0:
-<<<<<<< HEAD
 		if randi_range(1,10) < heart_chance:
 			var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")
 			var new_instance = Heart_SCENE.instantiate()
 			new_instance.Attributes = spawn_resource #this part is where im having trouble
 			new_instance.global_position = global_position
 			get_parent().add_child(new_instance)
-=======
 		var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")
 		var new_instance = Heart_SCENE.instantiate()
 		new_instance.Attributes = spawn_resource #this part is where im having trouble
 		new_instance.global_position = global_position
 		get_parent().add_child(new_instance)
->>>>>>> 3362d23f0fe1d6f716e8c0e23d5bf9fc9d0161a0
 		player.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))
 		queue_free()
