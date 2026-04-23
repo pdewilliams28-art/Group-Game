@@ -721,6 +721,7 @@ speed = 250.0
 damage = 10
 knockback = 25.0
 texture = SubResource("SpriteFrames_hp6f3")
+heart_chance = 5
 metadata/_custom_type_script = "uid://btt3ua54m0t7e"
 
 [node name="Main Scene" type="Node2D" unique_id=1616731312]

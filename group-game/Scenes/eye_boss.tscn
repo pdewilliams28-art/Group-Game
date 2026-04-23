@@ -144,8 +144,13 @@ wait_time = 0.4
 autostart = true
 
 [node name="Fire Enemy Summon Timer" type="Timer" parent="." unique_id=444181445]
-wait_time = 0.4
+wait_time = 4.0
+autostart = true
+
+[node name="Boss Phase Switch Timer" type="Timer" parent="." unique_id=1617550136]
+wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="Fireball Timer" to="." method="_on_fireball_timer_timeout"]
 [connection signal="timeout" from="Fire Enemy Summon Timer" to="." method="_on_fire_enemy_summon_timer_timeout"]
+[connection signal="timeout" from="Boss Phase Switch Timer" to="." method="_on_boss_phase_switch_timer_timeout"]
