@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhy8exp2h2rqa" path="res://Sprites/FireEnemy.png" id="1_yjfu0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hq5wm"]
-radius = 3.0594115
+radius = 2.7518175
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dmdje"]
 atlas = ExtResource("1_yjfu0")
@@ -110,6 +110,9 @@ animations = [{
 "speed": 6.5
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6uhs"]
+size = Vector2(20, 19.324999)
+
 [node name="EyeBoss" type="CharacterBody2D" unique_id=1206639849]
 z_index = 1
 scale = Vector2(4, 4)
@@ -127,3 +130,11 @@ autoplay = "Idle"
 frame_progress = 0.8599141
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=598251674]
+
+[node name="SenseRange" type="Area2D" parent="." unique_id=624919809]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SenseRange" unique_id=197046488]
+position = Vector2(0, 9.712497)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_d6uhs")
