@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://phettcph7fxa"]
+
+[ext_resource type="Script" uid="uid://rdcxd5y5k7ug" path="res://Scripts/eye_boss.gd" id="1_hq5wm"]
+[ext_resource type="Texture2D" uid="uid://bhy8exp2h2rqa" path="res://Sprites/FireEnemy.png" id="1_yjfu0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hq5wm"]
+radius = 2.7518175
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmdje"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtvwx"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6nch"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1hvh"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(0, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdp4e"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(48, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28v38"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(0, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0bak"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(48, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okhex"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m4jb"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvn26"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucfl8"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxchc"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k7vh"]
+atlas = ExtResource("1_yjfu0")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfqeg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmdje")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtvwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6nch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1hvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdp4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28v38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0bak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okhex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m4jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvn26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucfl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxchc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k7vh")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 6.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6uhs"]
+size = Vector2(20, 19.324999)
+
+[node name="EyeBoss" type="CharacterBody2D" unique_id=1206639849]
+z_index = 1
+scale = Vector2(4, 4)
+script = ExtResource("1_hq5wm")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1691397334]
+unique_name_in_owner = true
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_hq5wm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=160085309]
+sprite_frames = SubResource("SpriteFrames_hfqeg")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.8599141
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=598251674]
+
+[node name="SenseRange" type="Area2D" parent="." unique_id=624919809]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SenseRange" unique_id=197046488]
+position = Vector2(0, 9.712497)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_d6uhs")
+
+[node name="Fireball Timer" type="Timer" parent="." unique_id=187133670]
+wait_time = 0.4
+autostart = true
+
+[node name="Fire Enemy Summon Timer" type="Timer" parent="." unique_id=444181445]
+wait_time = 0.4
+autostart = true
+
+[connection signal="timeout" from="Fireball Timer" to="." method="_on_fireball_timer_timeout"]
+[connection signal="timeout" from="Fire Enemy Summon Timer" to="." method="_on_fire_enemy_summon_timer_timeout"]

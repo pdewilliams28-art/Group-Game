@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://buodfpxabobbo"]
+
+[ext_resource type="Script" uid="uid://clksnbjcx774e" path="res://fireball.gd" id="1_olwj8"]
+[ext_resource type="Texture2D" uid="uid://dokcvwtp1dnuw" path="res://Fireball (1).png" id="1_sf4mh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdani"]
+radius = 5.0
+
+[node name="fireball" type="Area2D" unique_id=322660990 groups=["Player"]]
+script = ExtResource("1_olwj8")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1843897067]
+shape = SubResource("CircleShape2D_wdani")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2113118027]
+texture = ExtResource("1_sf4mh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
