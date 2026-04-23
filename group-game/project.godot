@@ -24,6 +24,19 @@ Player_Manager="*uid://c32gx8s74xcyq"
 
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://Folders/": "gray",
+"res://Fonts/": "red",
+"res://Resources/": "orange",
+"res://Scenes/": "yellow",
+"res://Scripts/": "green",
+"res://Sounds/": "teal",
+"res://Sprites/": "blue",
+"res://tilesets/": "purple"
+}
+
 [global_group]
 
 Interactable="Interactables: notes, chests, maps, etc."

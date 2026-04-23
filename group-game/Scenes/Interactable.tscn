@@ -6,7 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsakb"]
 size = Vector2(11.180309, 11.481334)
 
-[node name="Interactable" type="Area2D" unique_id=1780072424]
+[node name="Interactable" type="Area2D" unique_id=1780072424 groups=["Interactable"]]
+scale = Vector2(5, 5)
+collision_layer = 32
+collision_mask = 32
 script = ExtResource("1_v6xsw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=12041905 groups=["Interactable"]]
