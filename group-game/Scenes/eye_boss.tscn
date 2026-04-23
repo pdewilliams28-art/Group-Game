@@ -148,3 +148,4 @@ wait_time = 0.4
 autostart = true
 
 [connection signal="timeout" from="Fireball Timer" to="." method="_on_fireball_timer_timeout"]
+[connection signal="timeout" from="Fire Enemy Summon Timer" to="." method="_on_fire_enemy_summon_timer_timeout"]
