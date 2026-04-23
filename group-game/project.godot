@@ -13,7 +13,7 @@ config_version=5
 config/name="Group Game"
 run/main_scene="uid://cgihykud333ql"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Folders/Sprites/icon.svg"
+config/icon="res://Sprites/icon.svg"
 
 [autoload]
 
@@ -28,12 +28,13 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Folders/": "gray",
-"res://Folders/Fonts/": "red",
-"res://Folders/Resources/": "orange",
-"res://Folders/Scenes/": "yellow",
-"res://Folders/Scripts/": "green",
-"res://Folders/Sounds/": "blue",
-"res://Folders/Sprites/": "purple"
+"res://Fonts/": "red",
+"res://Resources/": "orange",
+"res://Scenes/": "yellow",
+"res://Scripts/": "green",
+"res://Sounds/": "teal",
+"res://Sprites/": "blue",
+"res://tilesets/": "purple"
 }
 
 [global_group]
@@ -99,7 +100,6 @@ Attack={
 2d_physics/layer_3="Player Weapon"
 2d_physics/layer_4="Tilemap"
 2d_physics/layer_5="Consumables"
-2d_physics/layer_6="Interacting"
 2d_physics/layer_6="Movable"
 
 [physics]

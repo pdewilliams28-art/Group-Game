@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brsjci211w5lc"]
 
-[ext_resource type="Texture2D" uid="uid://cyfnmamvmiyfe" path="res://GroupGameTileset (1).png" id="1_im0tn"]
+[ext_resource type="Texture2D" path="res://GroupGameTileset (1).png" id="1_im0tn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_im0tn"]
 

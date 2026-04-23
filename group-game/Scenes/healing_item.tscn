@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cib2sbvoidtr"]
+
+[ext_resource type="SpriteFrames" uid="uid://dk6fl1510aqek" path="res://Sprites/Heart_sprite_frames.tres" id="1_cunu3"]
+[ext_resource type="Script" uid="uid://cl6tqatqmmbqt" path="res://Scripts/healing_item.gd" id="1_t0ky7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvl4t"]
+radius = 12.582336
+
+[node name="Healing item" type="Area2D" unique_id=1658949148]
+collision_layer = 16
+script = ExtResource("1_t0ky7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1912087843]
+z_index = 1
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_cunu3")
+frame_progress = 0.14400946
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=470302796]
+position = Vector2(0, 7)
+scale = Vector2(0.8957378, 0.3649664)
+shape = SubResource("CircleShape2D_jvl4t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
