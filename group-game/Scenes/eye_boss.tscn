@@ -138,3 +138,13 @@ scale = Vector2(10, 10)
 position = Vector2(0, 9.712497)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_d6uhs")
+
+[node name="Fireball Timer" type="Timer" parent="." unique_id=187133670]
+wait_time = 0.4
+autostart = true
+
+[node name="Fire Enemy Summon Timer" type="Timer" parent="." unique_id=444181445]
+wait_time = 0.4
+autostart = true
+
+[connection signal="timeout" from="Fireball Timer" to="." method="_on_fireball_timer_timeout"]
