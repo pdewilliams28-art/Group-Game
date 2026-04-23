@@ -1147,6 +1147,7 @@ animation = &"Sword_Down"
 offset = Vector2(-0.10908653, 5.4956717)
 
 [node name="BowSprite" type="Sprite2D" parent="Sword_Attack" unique_id=1630331717]
+z_index = -1
 position = Vector2(0, -28)
 scale = Vector2(2.084171, 2.084171)
 texture = ExtResource("5_ulo2v")
