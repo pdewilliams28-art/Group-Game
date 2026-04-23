@@ -123,6 +123,7 @@ func shoot_bow():
 	velocity = Vector2(0,0)
 	emit_signal("attack")
 	if $AnimatedSprite2D.animation == "Up" or $AnimatedSprite2D.animation == "Up_Idle":
+		$Sword_Attack/BowSprite.z_index = z_index -2
 		$AnimationPlayer.play("Bow_Up")
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 2
@@ -136,6 +137,7 @@ func shoot_bow():
 		get_parent().add_child(new_instance)
 		$AnimatedSprite2D.play("Attack_Up")
 	elif $AnimatedSprite2D.animation == "Down" or $AnimatedSprite2D.animation == "Down_Idle":
+		$Sword_Attack/BowSprite.z_index = z_index
 		$AnimationPlayer.play("Bow_Down")
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 4
@@ -149,6 +151,7 @@ func shoot_bow():
 		get_parent().add_child(new_instance)
 		$AnimatedSprite2D.play("Attack_Down")
 	elif $AnimatedSprite2D.animation == "Left" or $AnimatedSprite2D.animation == "Left_Idle":
+		$Sword_Attack/BowSprite.z_index = z_index
 		$AnimationPlayer.play("Bow_Left")
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 3
@@ -162,6 +165,7 @@ func shoot_bow():
 		new_instance.global_position = global_position
 		get_parent().add_child(new_instance)
 	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
+		$Sword_Attack/BowSprite.z_index = z_index
 		$AnimationPlayer.play("Bow_Right")
 		var spawn_resource: arrow_resource = preload("res://Resources/example_arrow_resource.tres")
 		spawn_resource.direction = 1
