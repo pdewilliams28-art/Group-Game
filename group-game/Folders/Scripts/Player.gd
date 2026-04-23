@@ -29,7 +29,9 @@ func _ready() -> void:
 	$Sword_Attack/Hitbox.disabled = true
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and interactable_trigger == true:
-		if interactable.type == "text":
+		if $Control.visible == true:
+			$Control.visible == false
+		elif interactable.type == "text":
 			$Control.visible = true
 			$Control/Label.text = interactable.text
 
