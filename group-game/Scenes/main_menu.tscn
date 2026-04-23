@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://b0rq5julbocj3"]
 
 [ext_resource type="Texture2D" uid="uid://c2c0m8qw3apn3" path="res://Sprites/icon.svg" id="1_28flt"]
+[ext_resource type="Script" uid="uid://cu3c75howhi4f" path="res://Scripts/main_menu.gd" id="1_qpv4c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qpv4c"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_66vk6"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6r12"]
+font_size = 14
 
 [node name="MainMenu" type="MarginContainer" unique_id=1071965227]
+process_mode = 3
 offset_right = 1153.0
 offset_bottom = 648.0
+script = ExtResource("1_qpv4c")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1949606450]
 layout_mode = 2
@@ -38,6 +50,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "PUZ-SOULS"
+label_settings = SubResource("LabelSettings_qpv4c")
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -61,3 +74,68 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit
 "
+
+[node name="Settings" type="PanelContainer" parent="." unique_id=913107267]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings" unique_id=2043410897]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/MarginContainer" unique_id=1963329765]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/HBoxContainer" unique_id=751568661]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1224538382]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Settings"
+label_settings = SubResource("LabelSettings_66vk6")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Main Button" type="Button" parent="Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=393966292]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Main Menu
+"
+
+[node name="Key Binds button" type="Button" parent="Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1513107209]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Key Binds
+"
+
+[node name="Label2" type="Label" parent="Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=875770614]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_o6r12")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1156794057]
+layout_mode = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_o6r12")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Volume Slider" type="HSlider" parent="Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2009211178]
+layout_mode = 2
+value = 100.0
+rounded = true
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Settings button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Exit button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Settings/MarginContainer/HBoxContainer/VBoxContainer/Main Button" to="." method="_on_main_button_pressed"]
+[connection signal="value_changed" from="Settings/MarginContainer/HBoxContainer/VBoxContainer/Volume Slider" to="." method="_on_volume_slider_value_changed"]
