@@ -229,7 +229,7 @@ func _process(_delta: float) -> void:
 	mana_bar.max_value = 100
 	mana_bar.value = float(mana) / max_mana * 100
 	update_mana_bar(mana,max_mana)
-
+	$Control/Label.text = str(arrows)
 func update_health_bar(current_hp, max_hp):
 	var health_pct = float(current_hp) / max_hp
 	# lerp(Color_at_0, Color_at_1, weight)

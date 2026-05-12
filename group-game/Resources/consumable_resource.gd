@@ -4,3 +4,4 @@ class_name consumable_resource
 @export var healing_amount: int
 @export var consumed_sfx: AudioStream
 @export var decay_time: int
+@export var arrow_amount: int

@@ -4,8 +4,10 @@ var decay_time: int
 var health_amount: int
 @onready var texture: SpriteFrames = Attributes.texture
 var consumed_sfx: AudioStream
+var arrow_amount
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	arrow_amount = Attributes.arrow_amount
 	decay_time = Attributes.decay_time
 	health_amount = Attributes.healing_amount
 	consumed_sfx = Attributes.consumed_sfx
@@ -27,4 +29,4 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		body.playsound_and_wait(consumed_sfx)
 		body.health += health_amount
-		
+		body.arrows += arrow_amount
