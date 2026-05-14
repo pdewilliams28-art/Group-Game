@@ -1110,6 +1110,8 @@ font_size = 24
 
 [node name="Player" type="CharacterBody2D" unique_id=545131653 groups=["Player"]]
 script = ExtResource("1_rpqav")
+health = 400
+arrows = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1902985526]
 texture_filter = 1

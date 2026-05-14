@@ -4,7 +4,7 @@ var fireball_scene = preload("res://Scenes/fireball.tscn")
 var firing: bool = false
 var flame_enemy_scene = preload("res://Scenes/placeholder_enemy.tscn")
 var flame_enemy_resource: Enemy_resource = load("res://Resources/flame_enemy.tres")
-@export var health: int = 1000
+@export var health: int = 500
 @onready var spawn_point = $Marker2D
 
 func _process(delta: float) -> void:

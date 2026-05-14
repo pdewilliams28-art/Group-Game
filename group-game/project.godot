@@ -22,6 +22,7 @@ Player_Manager="*uid://c32gx8s74xcyq"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [file_customization]

@@ -95,7 +95,7 @@ func _damage(body: Node2D):
 	knockback_taken -= (knockback_taken*knockback_resistance)/100
 	player_position = body.global_position
 	var player = get_tree().get_first_node_in_group("Player")
-	if player:
+	if is_in_group("Player"):
 		player.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
 	if health <= 0:
 		var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")

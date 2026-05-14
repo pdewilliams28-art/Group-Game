@@ -162,6 +162,7 @@ shape = SubResource("CircleShape2D_8ayjk")
 
 [node name="Detection Range" type="Area2D" parent="." unique_id=528071591]
 scale = Vector2(5, 5)
+collision_layer = 2
 
 [node name="Detection Collision" type="CollisionShape2D" parent="Detection Range" unique_id=120890191]
 unique_name_in_owner = true
