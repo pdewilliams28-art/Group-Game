@@ -13,8 +13,7 @@ var knockback_taken: float
 var knockback_resistance: float
 var player_position: Vector2
 var accel: float = 10
-var heart_chance
-var arrow_chance
+
 func _ready() -> void:
 	speed = attributes.speed
 	damage = attributes.damage
@@ -23,8 +22,7 @@ func _ready() -> void:
 	knockback = attributes.knockback
 	knockback_resistance = attributes.knockback_resistance
 	sprite.sprite_frames = attributes.texture
-	heart_chance = attributes.heart_chance
-	arrow_chance = attributes.arrow_chance
+
 func _physics_process(_delta: float) -> void:
 	if target:
 		chase_target()
@@ -97,14 +95,13 @@ func _damage(body: Node2D):
 	knockback_taken -= (knockback_taken*knockback_resistance)/100
 	player_position = body.global_position
 	var player = get_tree().get_first_node_in_group("Player")
-	if player.is_in_group("Player"):
+	if player:
 		player.playsound(preload("res://Sounds/Sword Hit Flesh.mp3.mp3"))
 	if health <= 0:
-		if randi_range(1,10) < heart_chance:
-			var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")
-			var new_instance = Heart_SCENE.instantiate()
-			new_instance.Attributes = spawn_resource #this part is where im having trouble
-			new_instance.global_position = global_position
-			get_parent().add_child(new_instance)
+		var spawn_resource: consumable_resource = preload("res://Resources/Heart.tres")
+		var new_instance = Heart_SCENE.instantiate()
+		new_instance.Attributes = spawn_resource #this part is where im having trouble
+		new_instance.global_position = global_position
+		get_parent().add_child(new_instance)
 		player.playsound(preload("res://Sounds/universfield-slime-impact-352473.mp3"))
 		queue_free()

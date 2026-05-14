@@ -6,10 +6,10 @@ var damage: int
 var knockback: int
 var target: String
 var speed: float
-var right_texture = preload("res://Sprites/Arrow Right.png")
-var up_texture = preload("res://Sprites/Arrow Up.png")
-var left_texture = preload("res://Sprites/Arrow Left.png")
-var down_texture = preload("res://Sprites/Arrow Down.png")
+var right_texture = preload("res://Folders/Sprites/Arrow Right.png")
+var up_texture = preload("res://Folders/Sprites/Arrow Up.png")
+var left_texture = preload("res://Folders/Sprites/Arrow Left.png")
+var down_texture = preload("res://Folders/Sprites/Arrow Down.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vblmk4o1up45"
-path="res://.godot/imported/FireEnemy (1).png-dc59128dd13301cc17a6d405db2efc02.ctex"
+uid="uid://dokcvwtp1dnuw"
+path="res://.godot/imported/Fireball (1).png-2883dcd1b72d16e25b300f221f4df5be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FireEnemy (1).png"
-dest_files=["res://.godot/imported/FireEnemy (1).png-dc59128dd13301cc17a6d405db2efc02.ctex"]
+source_file="res://Fireball (1).png"
+dest_files=["res://.godot/imported/Fireball (1).png-2883dcd1b72d16e25b300f221f4df5be.ctex"]
 
 [params]
 

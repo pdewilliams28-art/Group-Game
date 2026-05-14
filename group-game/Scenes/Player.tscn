@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://cmtgycydbofae" path="res://Sprites/Bow Ui element2.png" id="12_miouo"]
 [ext_resource type="Texture2D" uid="uid://bwnmcn0qwmyas" path="res://Sprites/Left click ui.png" id="12_o3h8g"]
 [ext_resource type="Texture2D" uid="uid://bs702ypb80q1g" path="res://Sprites/Right click ui.png" id="14_1e7my"]
+[ext_resource type="Texture2D" uid="uid://bqwe5g17ysdvf" path="res://Sprites/New Piskel-1.png (2).png" id="14_5v66d"]
+[ext_resource type="FontFile" uid="uid://de365qfa8dxaq" path="res://Fonts/blocks-serif.ttf" id="19_1iu4k"]
+[ext_resource type="Texture2D" uid="uid://dccsr1qino171" path="res://Sprites/Paper-1.png.png" id="20_m0x7a"]
+[ext_resource type="PackedScene" uid="uid://cshn1cwrg1l27" path="res://Scenes/paper.tscn" id="4_dewec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("2_kyqiw")
@@ -1095,6 +1099,15 @@ radius = 52.153618
 [sub_resource type="CircleShape2D" id="CircleShape2D_dewec"]
 radius = 28.01785
 
+[sub_resource type="LabelSettings" id="LabelSettings_m0x7a"]
+font = ExtResource("19_1iu4k")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_5v66d"]
+paragraph_spacing = 1.0
+font = ExtResource("19_1iu4k")
+font_size = 24
+
 [node name="Player" type="CharacterBody2D" unique_id=545131653 groups=["Player"]]
 script = ExtResource("1_rpqav")
 
@@ -1114,7 +1127,9 @@ wait_time = 0.7
 [node name="Invincibility_Timer" type="Timer" parent="." unique_id=1818204699]
 one_shot = true
 
-[node name="Interaction_Range" type="Area2D" parent="." unique_id=1513192852]
+[node name="Interaction_Range" type="Area2D" parent="." unique_id=1513192852 groups=["Player"]]
+collision_layer = 64
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_Range" unique_id=1346057077]
 shape = SubResource("CircleShape2D_kyqiw")
@@ -1150,7 +1165,7 @@ position = Vector2(0, -28)
 scale = Vector2(2.084171, 2.084171)
 texture = ExtResource("5_ulo2v")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1993944495]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1993944495 groups=["Player"]]
 position = Vector2(0, 10)
 collision_mask = 2
 
@@ -1158,7 +1173,7 @@ collision_mask = 2
 unique_name_in_owner = true
 shape = SubResource("CapsuleShape2D_gntrk")
 
-[node name="Detection_Range" type="Area2D" parent="." unique_id=2071541933]
+[node name="Detection_Range" type="Area2D" parent="." unique_id=2071541933 groups=["Player"]]
 collision_mask = 2
 
 [node name="Detection box" type="CollisionShape2D" parent="Detection_Range" unique_id=399850425]
@@ -1179,7 +1194,7 @@ stream = ExtResource("4_megsn")
 [node name="Camera" type="Camera2D" parent="." unique_id=963678607]
 
 [node name="Control" type="Control" parent="." unique_id=2145874303]
-z_index = 2
+z_index = 4
 layout_mode = 3
 anchors_preset = 0
 offset_left = -126.0
@@ -1264,6 +1279,25 @@ offset_bottom = 186.0
 texture = ExtResource("14_1e7my")
 expand_mode = 2
 
+[node name="TextureRectWASDOutline" type="TextureRect" parent="Control" unique_id=906243565]
+layout_mode = 0
+offset_left = 310.8488
+offset_top = -55.748047
+offset_right = 478.84882
+offset_bottom = 70.25195
+scale = Vector2(2.2796123, 2.3173969)
+texture = ExtResource("8_lslt6")
+expand_mode = 3
+
+[node name="TextureRectWASD" type="TextureRect" parent="Control" unique_id=50315179]
+layout_mode = 0
+offset_left = 410.60843
+offset_top = -5.868215
+offset_right = 450.60843
+offset_bottom = 34.131786
+scale = Vector2(5, 5.133333)
+texture = ExtResource("14_5v66d")
+
 [node name="Health Bar" type="TextureProgressBar" parent="Control" unique_id=1350255692]
 unique_name_in_owner = true
 z_index = 3
@@ -1303,12 +1337,66 @@ offset_right = -926.89496
 offset_bottom = 17.131786
 scale = Vector2(3.6993756, 3.6993756)
 
+[node name="TutorialText" type="Label" parent="." unique_id=731314820]
+visible = false
+offset_left = -66.0
+offset_top = -125.0
+offset_right = 67.0
+offset_bottom = -67.0
+text = "E"
+label_settings = SubResource("LabelSettings_m0x7a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Control" parent="." unique_id=1647163571]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Text" unique_id=222005014]
+z_index = 6
+layout_mode = 0
+offset_left = -73.0
+offset_top = -154.0
+offset_right = 372.0
+offset_bottom = 160.0
+text = "A LOT LOT LOT LOT LOT LOT LOT LOT LOT LOT LOT LOT LOT LOT LOT OF TEXT"
+label_settings = SubResource("LabelSettings_5v66d")
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Text" unique_id=336073576]
+z_index = 5
+layout_mode = 0
+offset_left = -501.0
+offset_top = -209.0
+offset_right = -81.0
+offset_bottom = 215.0
+texture = ExtResource("20_m0x7a")
+
+[node name="ColorRect" type="ColorRect" parent="Text" unique_id=1357478627]
+z_index = 5
+layout_mode = 0
+offset_left = -82.0
+offset_top = -161.0
+offset_right = 383.0
+offset_bottom = 172.0
+color = Color(0.5372549, 0.5372549, 0.5372549, 0.5137255)
+
 [connection signal="attack" from="." to="Sword_Attack" method="_on_player_attack"]
+[node name="Paper" parent="." unique_id=1022872140 instance=ExtResource("4_dewec")]
+visible = false
+offset_left = -526.0
+offset_top = -307.0
+offset_right = -526.0
+offset_bottom = -307.0
+
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="timeout" from="Invincibility_Timer" to="." method="_on_invincibility_timer_timeout"]
-[connection signal="body_entered" from="Interaction_Range" to="." method="_on_interaction_range_body_entered"]
-[connection signal="body_exited" from="Interaction_Range" to="." method="_on_interaction_range_body_exited"]
+[connection signal="area_exited" from="Interaction_Range" to="." method="_on_interaction_range_area_exited"]
+[connection signal="area_shape_entered" from="Interaction_Range" to="." method="_on_interaction_range_area_shape_entered"]
 [connection signal="body_entered" from="Sword_Attack" to="Sword_Attack" method="_on_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
