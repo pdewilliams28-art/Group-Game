@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bg2wsc1cu6ys3"]
+
+[ext_resource type="Script" uid="uid://2cu0jf6c7l0f" path="res://door_area.gd" id="1_stnp0"]
+[ext_resource type="Texture2D" uid="uid://ba65hsxq7xtgh" path="res://Sprites/Tileset.png" id="2_bsukh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbvty"]
+size = Vector2(33, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhs1e"]
+atlas = ExtResource("2_bsukh")
+region = Rect2(432.26324, 30.763165, 30.78949, 36.434223)
+
+[node name="DoorArea" type="StaticBody2D" unique_id=489515370]
+script = ExtResource("1_stnp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306299512]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_mbvty")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=292670066]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_vhs1e")
