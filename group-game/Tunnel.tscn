@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dlr2qjimwq6kn"]
+
+[ext_resource type="Script" uid="uid://c61ghmxel73o6" path="res://tunnel.gd" id="1_4k2ek"]
+[ext_resource type="Texture2D" uid="uid://bqfm403pn5kfj" path="res://Sprites/New Piskel-1.png (3).png" id="1_7x5ue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4k2ek"]
+radius = 39.115215
+
+[node name="Tunnel" type="Area2D" unique_id=702496864]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_4k2ek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=727794955]
+shape = SubResource("CircleShape2D_4k2ek")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=914327425]
+position = Vector2(-8.999999, 16.999998)
+scale = Vector2(5, 5)
+texture = ExtResource("1_7x5ue")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
