@@ -31,6 +31,7 @@ var stagger = false
 @onready var mana_bar: TextureProgressBar = %"Mana Bar"
 
 func _ready() -> void:
+	$Sword_Attack/BowSprite.visible = false
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
 func _physics_process(_delta: float) -> void:
