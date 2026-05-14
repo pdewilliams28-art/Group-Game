@@ -3,9 +3,13 @@ var fireball_direction = 1
 var fireball_scene = preload("res://Scenes/fireball.tscn")
 var firing: bool = false
 var flame_enemy_scene = preload("res://Scenes/placeholder_enemy.tscn")
-var flame_enemy_resource: Enemy_resource = preload("res://Resources/Fire_enemy.tres")
+var flame_enemy_resource: Enemy_resource = load("res://Resources/flame_enemy.tres")
 @export var health: int = 1000
 @onready var spawn_point = $Marker2D
+
+func _process(delta: float) -> void:
+	await get_tree().create_timer(5.0).timeout
+	_on_boss_phase_switch_timer_timeout()
 func shoot(dir: Vector2):
 	var fireball = fireball_scene.instantiate()
 	fireball.position = spawn_point.global_position

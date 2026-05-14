@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://drshh4n85u758" path="res://Sprites/Health Bar Under Player.png" id="3_5ixxa"]
 [ext_resource type="Script" uid="uid://cywuut585clli" path="res://Scripts/sword_attack.gd" id="3_bhhdu"]
 [ext_resource type="Texture2D" uid="uid://cwgj0k5y6grqx" path="res://Sprites/Sword.png" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://cshn1cwrg1l27" path="res://Scenes/paper.tscn" id="4_dewec"]
 [ext_resource type="AudioStream" uid="uid://cc4uwmpk2xqbe" path="res://Sounds/johnnybacon156-fah-469417.mp3" id="4_megsn"]
 [ext_resource type="Texture2D" uid="uid://cr5u4t830cdgk" path="res://Sprites/Health Bar Over Player.png" id="4_nn08x"]
 [ext_resource type="Texture2D" uid="uid://cynuh6c4us05l" path="res://Sprites/Health Bar Progress Player.png" id="5_5ixxa"]
@@ -21,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://bqwe5g17ysdvf" path="res://Sprites/New Piskel-1.png (2).png" id="14_5v66d"]
 [ext_resource type="FontFile" uid="uid://de365qfa8dxaq" path="res://Fonts/blocks-serif.ttf" id="19_1iu4k"]
 [ext_resource type="Texture2D" uid="uid://dccsr1qino171" path="res://Sprites/Paper-1.png.png" id="20_m0x7a"]
-[ext_resource type="PackedScene" uid="uid://cshn1cwrg1l27" path="res://Scenes/paper.tscn" id="4_dewec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("2_kyqiw")
@@ -1384,7 +1384,6 @@ offset_right = 383.0
 offset_bottom = 172.0
 color = Color(0.5372549, 0.5372549, 0.5372549, 0.5137255)
 
-[connection signal="attack" from="." to="Sword_Attack" method="_on_player_attack"]
 [node name="Paper" parent="." unique_id=1022872140 instance=ExtResource("4_dewec")]
 visible = false
 offset_left = -526.0
@@ -1392,6 +1391,7 @@ offset_top = -307.0
 offset_right = -526.0
 offset_bottom = -307.0
 
+[connection signal="attack" from="." to="Sword_Attack" method="_on_player_attack"]
 [connection signal="timeout" from="Dodge_Timer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="timeout" from="Invincibility_Timer" to="." method="_on_invincibility_timer_timeout"]

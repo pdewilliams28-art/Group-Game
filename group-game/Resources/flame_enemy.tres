@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="Enemy_resource" format=3 uid="uid://bsllme10o4mxc"]
+
+[ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="1_gkpaj"]
+[ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="2_00ibj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klyvl"]
+atlas = ExtResource("2_00ibj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai7m0"]
+atlas = ExtResource("2_00ibj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vmf4"]
+atlas = ExtResource("2_00ibj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bn2h"]
+atlas = ExtResource("2_00ibj")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sikkd"]
+atlas = ExtResource("2_00ibj")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7kb1"]
+atlas = ExtResource("2_00ibj")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41hbb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klyvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai7m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vmf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bn2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sikkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7kb1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_gkpaj")
+health = 125
+speed = 150.0
+damage = 40
+knockback = 50.0
+texture = SubResource("SpriteFrames_41hbb")
+knockback_resistance = 50
+metadata/_custom_type_script = "uid://btt3ua54m0t7e"
