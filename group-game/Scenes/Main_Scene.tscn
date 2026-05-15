@@ -7,15 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="4_4y1r4"]
 [ext_resource type="Script" uid="uid://btt3ua54m0t7e" path="res://Resources/enemy_resource.gd" id="4_ibde2"]
 [ext_resource type="Texture2D" uid="uid://bktytlqt00dkw" path="res://Sprites/Slime.png" id="5_0k7nw"]
+[ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="7_1l8qe"]
 [ext_resource type="PackedScene" uid="uid://cib2sbvoidtr" path="res://Scenes/healing_item.tscn" id="8_7h23t"]
+[ext_resource type="PackedScene" uid="uid://b0uvv2qcda44i" path="res://Scenes/Interactable.tscn" id="9_06phl"]
 [ext_resource type="Resource" uid="uid://dklxkgetrwn6c" path="res://Resources/Heart.tres" id="10_s7evf"]
 [ext_resource type="PackedScene" uid="uid://dlr2qjimwq6kn" path="res://Tunnel.tscn" id="11_0k7nw"]
-[ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="11_np8lt"]
-[ext_resource type="PackedScene" uid="uid://b0uvv2qcda44i" path="res://Scenes/Interactable.tscn" id="12_np8lt"]
-[ext_resource type="Texture2D" uid="uid://dk06gkm0u12gi" path="res://Sprites/unnamed.png" id="4_6bry8"]
-[ext_resource type="Script" uid="uid://dihiis82th61x" path="res://Scripts/pause_menu.gd" id="5_7h23t"]
-[ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="7_1l8qe"]
-[ext_resource type="PackedScene" uid="uid://b0uvv2qcda44i" path="res://Scenes/Interactable.tscn" id="9_06phl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yw3w"]
 texture = ExtResource("1_7fr83")
@@ -762,7 +758,7 @@ collision_mask = 9
 sword_hit_flesh_sfx = ExtResource("4_0k7nw")
 metadata/_edit_use_anchors_ = true
 
-[node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("11_np8lt")]
+[node name="Pause Menu" parent="objects that pause/Player" unique_id=1301557043 instance=ExtResource("7_1l8qe")]
 unique_name_in_owner = true
 z_index = 5
 
@@ -776,14 +772,14 @@ attributes = SubResource("Resource_x6hpk")
 z_index = 1
 position = Vector2(1450, -940)
 
-[node name="Interactable" parent="." unique_id=1780072424 instance=ExtResource("12_np8lt")]
+[node name="Interactable" parent="." unique_id=1780072424 instance=ExtResource("9_06phl")]
 position = Vector2(577, 187.00002)
 text = "WARNING! Enemies ahead! Press LMB to attack!"
 
-[node name="Interactable2" parent="." unique_id=1076392806 instance=ExtResource("12_np8lt")]
+[node name="Interactable2" parent="." unique_id=1076392806 instance=ExtResource("9_06phl")]
 position = Vector2(576, -607.99994)
 text = "Press F or Space to Dodge."
 
-[node name="Interactable3" parent="." unique_id=155554292 instance=ExtResource("12_np8lt")]
+[node name="Interactable3" parent="." unique_id=155554292 instance=ExtResource("9_06phl")]
 position = Vector2(416.0005, -374)
 text = "Press RMB to use the bow (it might not work)"

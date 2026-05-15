@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cn23illah5u04"]
 
+[ext_resource type="Script" uid="uid://dhmdls7142shf" path="res://Scenes/boss_scene.gd" id="1_qwaro"]
 [ext_resource type="Texture2D" uid="uid://cyfnmamvmiyfe" path="res://tilesets/GroupGameTileset (1).png" id="1_vpfhl"]
 [ext_resource type="PackedScene" uid="uid://phettcph7fxa" path="res://Scenes/eye_boss.tscn" id="2_qwaro"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="3_nvf4x"]
@@ -1107,6 +1108,8 @@ texture = ExtResource("1_vpfhl")
 sources/0 = SubResource("TileSetAtlasSource_107hj")
 
 [node name="Boss_Scene" type="Node2D" unique_id=1841006262]
+process_mode = 1
+script = ExtResource("1_qwaro")
 
 [node name="Base" type="TileMapLayer" parent="." unique_id=287148525]
 scale = Vector2(4, 4)
