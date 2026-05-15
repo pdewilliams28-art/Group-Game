@@ -8,7 +8,7 @@ var flame_enemy_resource: Enemy_resource = load("res://Resources/flame_enemy.tre
 @onready var spawn_point = $Marker2D
 
 func _process(delta: float) -> void:
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(10.0).timeout
 	_on_boss_phase_switch_timer_timeout()
 func shoot(dir: Vector2):
 	var fireball = fireball_scene.instantiate()
