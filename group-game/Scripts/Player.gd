@@ -7,9 +7,6 @@ var max_health: int = health
 @export var mana: int = 200
 var max_mana: int = mana
 @export var SPEED: float = 350.0
-@export var arrow_damage: int = 20
-@export var arrow_speed: float = 20
-@export var arrow_knockback: float = 20
 const JUMP_VELOCITY = -400.0
 const accel = 100
 var dodge: bool = false
@@ -20,23 +17,36 @@ var interactable = NAN
 var direction: int = 0
 var attacking = false
 var stagger = false
-var push_strength: float = 50
-@export var arrows: int
-
+@export var arrow_damage: int = 50
+@export var arrow_speed: float = 20
+@export var arrow_knockback: float = 20
+@export var arrows = 20
+var Arrow_SCENE = preload("res://Scenes/arrow_projectile.tscn")
+@onready var arrow_scene = preload("res://Scenes/arrow_projectile.tscn")
 @export var sword_swish_sfx: AudioStream = preload("res://Sounds/Knife Swish.mp3.mp3")
 @export var sword_hit_flesh_sfx: AudioStream = preload("res://Sounds/Sword Hit Flesh.mp3.mp3")
 @export var example_sound: AudioStream = preload("res://Sounds/alex_jauk-slap-237622.mp3")
 @onready var audio_player = %"Sound_effects"
 @onready var health_bar: TextureProgressBar = %"Health Bar"
 @onready var mana_bar: TextureProgressBar = %"Mana Bar"
-var Arrow_SCENE: PackedScene = preload("res://Scenes/arrow_projectile.tscn")
+
 func _ready() -> void:
+	$Sword_Attack/BowSprite.visible = false
 	attacking = false
 	$Sword_Attack/Hitbox.disabled = true
-	$Sword_Attack/BowSprite.visible = false
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Interact") and interactable_trigger == true:
+		if interactable.type == "text":
+			if $Text.visible == true:
+				$Text.visible = false
+			else:
+				$Text.visible = true
+				$Text/Label.text = interactable.text
+
 	if Input.is_action_just_pressed("Dodge") and dodge_cooldown == false and attacking == false:
 		Dodge()
+	if Input.is_action_just_pressed("Interact") and interactable_trigger == true:
+		print(interactable)
 	if dodge == false and attacking == false:
 		var move_vector: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
 		velocity = velocity.move_toward(move_vector * SPEED, accel)
@@ -64,7 +74,6 @@ func _physics_process(_delta: float) -> void:
 			$AnimatedSprite2D.play("Left_Idle")
 		elif $AnimatedSprite2D.animation == "Right":
 			$AnimatedSprite2D.play("Right_Idle")
-			
 	if  Input.is_action_just_pressed("Up"):
 		direction = 1
 	if Input.is_action_just_released("Up") and direction == 1:
@@ -116,7 +125,6 @@ func _physics_process(_delta: float) -> void:
 			shoot_bow()
 			arrows -=1
 	move_and_slide()
-	push_blocks()
 func shoot_bow():
 	attacking = true
 	$Attack_Timer.wait_time = 0.4
@@ -179,10 +187,8 @@ func shoot_bow():
 		new_instance.global_position = global_position
 		get_parent().add_child(new_instance)
 		$AnimatedSprite2D.play("Attack_Right")
-
 func Attack():
 	attacking = true
-	$Attack_Timer.wait_time = 0.2
 	$Attack_Timer.start()
 	#print(attacking)
 	$Sword_Attack/Hitbox.disabled = false
@@ -210,7 +216,6 @@ func Attack():
 		$Sword_Attack/AnimatedSprite2D.visible = true
 
 func _process(_delta: float) -> void:
-	$Control/Label.text = str(arrows)
 	var bodies = $Hurtbox.get_overlapping_bodies()
 	for body in bodies:
 		#print("hit!")
@@ -228,24 +233,17 @@ func _process(_delta: float) -> void:
 	mana_bar.value = float(mana) / max_mana * 100
 	update_mana_bar(mana,max_mana)
 	$Control/Label.text = str(arrows)
-
-
-
 func update_health_bar(current_hp, max_hp):
 	var health_pct = float(current_hp) / max_hp
 	# lerp(Color_at_0, Color_at_1, weight)
 	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
 	health_bar.tint_progress = Color.RED.lerp(Color.GREEN, health_pct-.3)
 
-
-
 func update_mana_bar(current_m, max_m):
 	var mana_pct = float(current_m) / max_m
 	# lerp(Color_at_0, Color_at_1, weight)
 	# As health_pct goes from 1.0 (full) to 0.0 (empty), color shifts from Green to Red
 	mana_bar.tint_progress = Color.WHITE.lerp(Color.BLUE, mana_pct)
-
-
 
 func Dodge():
 	dodge = true
@@ -265,8 +263,6 @@ func Dodge():
 	elif $AnimatedSprite2D.animation == "Right" or $AnimatedSprite2D.animation == "Right_Idle":
 		velocity = Vector2(1000, 0)
 		$AnimatedSprite2D.play("Roll_Right")
-
-
 
 func _on_dodge_timer_timeout() -> void:
 	dodge = false
@@ -288,23 +284,15 @@ func _on_dodge_cooldown_timeout() -> void:
 func _on_interaction_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Interactable"):
 		interactable_trigger = true
-		interactable = body
-		print(interactable)
+		body = interactable
 	
 
 
 @warning_ignore("unused_parameter")
-func _on_interaction_range_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Interactable"):
-		interactable_trigger = false
-
-
 
 func _on_invincibility_timer_timeout() -> void:
 	Invincible = false
 	stagger = false
-
-
 
 func _on_attack_timer_timeout() -> void:
 	attacking = false
@@ -318,8 +306,6 @@ func _on_attack_timer_timeout() -> void:
 		$AnimatedSprite2D.play("Left_Idle")
 	if $AnimatedSprite2D.animation == "Attack_Right":
 		$AnimatedSprite2D.play("Right_Idle")
-
-
 
 func playsound_and_wait(sound):
 	var sfx: AudioStream = sound
@@ -338,6 +324,7 @@ func playsound_with_pitch_variation(sound,pitch_variation):
 	audio_player.stream = sfx
 	audio_player.pitch_scale = randf_range(1-pitch_variation, 1+pitch_variation)
 	audio_player.play()
+
 func _damage(body: Node2D):
 	if Invincible == false:
 		if sqrt(pow(((position.x-body.position.x)*body.knockback),2) + pow(((position.y-body.position.y)*body.knockback),2)) >= 25 *body.knockback:
@@ -360,11 +347,15 @@ func _damage(body: Node2D):
 			$Invincibility_Timer.start()
 			playsound_and_wait(example_sound)
 
-func push_blocks():
-	var collision:KinematicCollision2D = get_last_slide_collision()
-	if collision:
-		var collider_node = collision.get_collider()
-		print(collision.get_collider())
-		if collider_node.is_in_group("Movable"):
-			var collision_normal: Vector2 = collision.get_normal()
-			collider_node.apply_central_force(-collision_normal * push_strength)
+func _on_interaction_range_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.is_in_group("Interactable"):
+		interactable_trigger = true
+		interactable = area
+		$TutorialText.visible = true
+		print(interactable)
+
+func _on_interaction_range_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Interactable"):
+		interactable_trigger = false
+		$TutorialText.visible = false
+		$Text.visible = false

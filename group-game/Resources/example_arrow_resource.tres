@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_2ajci")
+damage = 20
+knockback = 10
+target = "Enemy"
+speed = 5.0
 metadata/_custom_type_script = "uid://bbxoismbjm4dj"

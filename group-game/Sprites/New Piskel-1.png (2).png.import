@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw2wqnuh4v56a"
-path="res://.godot/imported/FireEnemy (1).png-dc59128dd13301cc17a6d405db2efc02.ctex"
+uid="uid://bqwe5g17ysdvf"
+path="res://.godot/imported/New Piskel-1.png (2).png-6694b30870dc0c450769f43d20f87055.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FireEnemy (1).png"
-dest_files=["res://.godot/imported/FireEnemy (1).png-dc59128dd13301cc17a6d405db2efc02.ctex"]
+source_file="res://Sprites/New Piskel-1.png (2).png"
+dest_files=["res://.godot/imported/New Piskel-1.png (2).png-6694b30870dc0c450769f43d20f87055.ctex"]
 
 [params]
 

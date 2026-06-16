@@ -46,3 +46,4 @@ size_flags_vertical = 3
 text = "Quit to Main Menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit to Main Menu" to="." method="_on_quit_to_main_menu_pressed"]

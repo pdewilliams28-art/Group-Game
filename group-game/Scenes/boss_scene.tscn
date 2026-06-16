@@ -1,11 +1,11 @@
-[gd_scene format=4 uid="uid://b4p5ht83ly1nx"]
+[gd_scene format=4 uid="uid://cn23illah5u04"]
 
+[ext_resource type="Script" uid="uid://dhmdls7142shf" path="res://Scenes/boss_scene.gd" id="1_qwaro"]
 [ext_resource type="Texture2D" uid="uid://cyfnmamvmiyfe" path="res://tilesets/GroupGameTileset (1).png" id="1_vpfhl"]
 [ext_resource type="PackedScene" uid="uid://phettcph7fxa" path="res://Scenes/eye_boss.tscn" id="2_qwaro"]
 [ext_resource type="PackedScene" uid="uid://4m30gbwn4h8h" path="res://Scenes/Player.tscn" id="3_nvf4x"]
 [ext_resource type="AudioStream" uid="uid://cc4uwmpk2xqbe" path="res://Sounds/johnnybacon156-fah-469417.mp3" id="4_xfyyv"]
 [ext_resource type="PackedScene" uid="uid://dl2gjoown3w1w" path="res://Scenes/pause_menu.tscn" id="5_6o7nj"]
-[ext_resource type="Texture2D" uid="uid://cqjwl6xe10p3e" path="res://Sprites/Firewall.png" id="6_rtqds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qv2og"]
 texture = ExtResource("1_vpfhl")
@@ -1108,6 +1108,8 @@ texture = ExtResource("1_vpfhl")
 sources/0 = SubResource("TileSetAtlasSource_107hj")
 
 [node name="Boss_Scene" type="Node2D" unique_id=1841006262]
+process_mode = 1
+script = ExtResource("1_qwaro")
 
 [node name="Base" type="TileMapLayer" parent="." unique_id=287148525]
 scale = Vector2(4, 4)
@@ -1138,4 +1140,3 @@ tile_set = SubResource("TileSet_6wt0e")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1419981155]
 position = Vector2(1792, 831)
 scale = Vector2(8, 4)
-texture = ExtResource("6_rtqds")

@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		toggle_pause()
-	if %"Pause Menu".paused == false:
+	if pause_menu.paused == false:
 		toggle_pause()
 
 func toggle_pause():
@@ -18,11 +18,11 @@ func toggle_pause():
 	if tree.paused == false:
 		tree.paused = true
 		pause_menu.visible = true
-		%"Pause Menu".paused = true
+		pause_menu.paused = true
 	else:
 		tree.paused = false
 		pause_menu.visible = false
-		%"Pause Menu".paused = true
+		pause_menu.paused = true
 
 
 func _on_pause_menu_resume_button_pressed() -> void:

@@ -1,9 +1,6 @@
 extends Area2D
 
-@export var interact_type = 1
-var paper_sprite = preload("res://Sprites/Paper-2.png.png")
-@export var text = "hello world!"
-@export var type = "text"
+@export var Current_Scene = "res://boss_scene.tscn"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,7 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if interact_type == 1:
-		pass
-	if interact_type == 2:
-		pass
+	pass
+
+
+func _on_area_entered(area: Area2D) -> void:
+	print("tunnel")
+	if area.is_in_group("Player") == true:
+		get_tree().change_scene_to_file.call_deferred(Current_Scene)
+		get_tree().paused = false
